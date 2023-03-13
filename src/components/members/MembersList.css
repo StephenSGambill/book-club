@@ -1,0 +1,13 @@
+.members {
+    /* display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; */
+}
+
+.member {
+    background-color: blanchedalmond;
+    border: 1px dotted blue;
+    margin: 1rem;
+    padding: 1rem;
+
+}

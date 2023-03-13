@@ -1,0 +1,17 @@
+.clubs {
+    /* display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; */
+}
+
+.club {
+    background-color: blanchedalmond;
+    border: 1px dotted blue;
+    margin: 1rem;
+    padding: 1rem;
+
+}
+
+.bookCover {
+    width: 5rem;
+}
