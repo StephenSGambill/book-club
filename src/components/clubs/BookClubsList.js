@@ -1,26 +1,26 @@
-import { getClubMembers, getMembers } from "../ApiManager";
+import { getClubMembers, getMembers } from "../ApiManager"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getBookClubs } from "../ApiManager";
-import "./BookClubs.css"
+import { getBookClubs } from "../ApiManager"
+import "./BookClubsList.css"
 
-export const BookClubs = () => {
+export const BookClubsList = () => {
     const [clubs, setClubs] = useState([])
     const [clubMembers, setClubMembers] = useState([])
-    
-    
+
+
     const localUser = localStorage.getItem("bookclub_member")
     const userObject = JSON.parse(localUser)
 
     const navigate = useNavigate()
 
 
-        useEffect(
+    useEffect(
         () => {
             getBookClubs()
                 .then((clubsArray) => {
                     setClubs(clubsArray)
-                   })
+                })
         },
         []
     )
@@ -30,19 +30,21 @@ export const BookClubs = () => {
             getClubMembers()
                 .then((clubMembersArray) => {
                     setClubMembers(clubMembersArray)
-                   })
+                })
         },
         []
     )
 
     return (
         <>
-            <h2>List of Clubs</h2>
-    
             <article className="clubs">
+                <h2>Clubs List   <button className="btn btn-primary"
+            onClick={() => navigate("/clubs/create")}>Add Club</button></h2>
+
+
                 {clubs.map((club) => {
-                    let foundClubMembers = clubMembers.filter((clubMember) => club.id === clubMember.clubId);
-    
+                    let foundClubMembers = clubMembers.filter((clubMember) => club.id === clubMember.clubId)
+
                     return (
                         <section className="club" key={`club--${club.id}`}>
                             <div>
@@ -51,7 +53,8 @@ export const BookClubs = () => {
                             <img className="bookCover" src={club.book.image} />
                             <div>Title: {club.book.title}</div>
                             <div>Author: {club.book.author}</div>
-                            <div><b>Club Members:</b></div>
+                            <div>Synopsis: {club.book.synopsis}</div>
+                            <div className="clubMemberContainer"><b>Club Members:</b></div>
                             <article className="clubMembers">
                                 {foundClubMembers.map((foundClubMember) => (
                                     <div key={foundClubMember.id}>
@@ -60,10 +63,10 @@ export const BookClubs = () => {
                                 ))}
                             </article>
                         </section>
-                    );
+                    )
                 })}
             </article>
         </>
-    );
-    
+    )
+
 }

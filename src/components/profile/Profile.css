@@ -1,0 +1,17 @@
+.profile {
+    background-color: blanchedalmond;
+    box-shadow: 1px 1px 5px;
+    border-radius: 10px;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.profilePic {
+    width: 8rem;
+}
+
+.clubsContainer {
+    border-top: 1px solid brown;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}

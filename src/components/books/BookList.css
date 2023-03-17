@@ -1,14 +1,14 @@
 .books {
-    /* display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; */
+    margin: 2rem;
+    
 }
 
-.book {
+.bookContainer {
     background-color: blanchedalmond;
-    border: 1px dotted blue;
-    margin: 1rem;
     padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px;
+    margin-bottom: 1rem;
 
 }
 

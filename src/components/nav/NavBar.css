@@ -2,12 +2,29 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: left;
+    padding: 1rem;
+    margin-top: 0;
+    background-image: url("/Users/stephengambill/workspace/book-club/src/components/resources/images/bookshelf.jpeg");
+    background-size: auto;
 }
 
 .navbar__item {
     flex-basis: 20%;
     list-style-type: none;
+    margin: 1rem;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+    text-shadow: 1px 1px black;
+    font-size: 25px;
 }
+.navbar__link:link { text-decoration: none; 
+    color: white;}
+.navbar__link:visited { text-decoration: none; color: white;}
+.navbar__link:hover { text-decoration: none; color:peachpuff; }
+.navbar__link:active { text-decoration: none; }
+
 
 .navbar__logout {
     margin-left: auto;

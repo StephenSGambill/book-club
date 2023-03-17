@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getBooks } from "../ApiManager"
+import { BookForm } from "./BookForm"
 import "./BookList.css"
 
 export const BookList = () => {
@@ -24,29 +25,22 @@ export const BookList = () => {
     )
 
     return <>
-        {
-            userObject.isStaff
-                ?
-                <>
-                   
-                    <button onClick={() => navigate("/book/create")}>Create New</button>
-                </>
-                : ""
-        }
-
-        <h2>List of Books</h2>
+       
 
         <article className="books" >
+        <h2>Book List  <button className="btn btn-primary"
+            onClick={() => navigate("/books/create")}>Add Book</button></h2>
+        
+        
+
             {
                 books.map((book) => {
                    
-                    return <section className="book" key={`book--${book.id}`} >
+                    return <section className="bookContainer" key={`book--${book.id}`} >
                         <img className="bookCover" src={book.image} alt="Book Cover"/>
-                        <div><b>Titlew: {book.title}</b></div>
+                        <div><b>Title: {book.title}</b></div>
                         <div>Author: {book?.author} </div>
-                        <div>Synopsis: {book.description}</div>
-
-
+                        <div>Synopsis: {book.synopsis}</div>
                     </section>
 
                 })

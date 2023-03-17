@@ -1,0 +1,43 @@
+.chapterCommentsContainer{
+  width: 95%;
+  margin: auto
+}
+
+.bookClubInfo {
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px;
+  padding: .5rem;
+  font-size: .75rem;
+  background-color:blanchedalmond;
+  
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.commentsContainer {
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px;
+  margin: 1rem;
+  padding: 1rem;
+  background-color:blanchedalmond;
+  
+}
+
+.commentForm {
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px;
+  margin: 1rem;
+  padding: .5rem;
+  background-color:blanchedalmond;
+}
+
+.card {
+  
+  border-top: 1px solid brown ;
+  padding-bottom: 1rem;
+}
+
+.btn {
+  margin-top: 1rem;
+}

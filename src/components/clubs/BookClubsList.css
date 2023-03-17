@@ -1,0 +1,29 @@
+.clubs {
+   margin: 2rem;
+}
+
+.club {
+    background-color: blanchedalmond;
+    box-shadow: 1px 1px 5px;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.bookCover {
+    width: 5rem;
+}
+
+.clubMemberContainer {
+    border-top: 1px solid brown;
+    margin-top: 1rem;
+}
+
+.btn {
+    background-color: rgb(229, 237, 234);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px;
+    font-family: 
+}

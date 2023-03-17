@@ -10,13 +10,13 @@ export const AdminNav = () => {
                 <Link className="navbar__link" to="/bookList">Book List</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/members">Members</Link>
+                <Link className="navbar__link" to="/members">Members List</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/bookClubs">Clubs</Link>
+                <Link className="navbar__link" to="/bookClubs">Clubs List</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/profile">Profile</Link>
+                <Link className="navbar__link" to="/profile">My Profile</Link>
             </li>
 
 

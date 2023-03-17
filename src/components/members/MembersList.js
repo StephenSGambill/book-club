@@ -6,6 +6,9 @@ import "./MembersList.css"
 export const MembersList = () => {
     const [members, setMembers] = useState([])
     
+
+
+    
     const localUser = localStorage.getItem("bookclub_member")
     const userObject = JSON.parse(localUser)
 
@@ -17,31 +20,41 @@ export const MembersList = () => {
             getMembers()
                 .then((membersArray) => {
                     setMembers(membersArray)
-                   
-                })
+                  })
+                              
         },
         []
     )
 
     return <>
-        
-        <h2>List of Members</h2>
-
         <article className="members" >
-            {
-                members.map((member) => {
+        <h2>Members List</h2>
+        <div>
+            { 
+                members.sort((member1, member2) => {
+                    if (member1.lastName < member2.lastName) {
+                        return -1;
+                      } else if (member1.lastName > member2.lastName) {
+                        return 1;
+                      } else {
+                        return 0;
+                      }
+                    }).map((member) => {
                    
                     return <section className="member" key={`member--${member.id}`} >
-                        <div>Name: {member.firstName} {member.lastName}</div>
-                        <div>Email: {member.email} </div>
-                        <div>Admin?: {member.isAdmin ? "Yes" : "No"}</div>
-                        
-
-
+                        <div>
+                            <img className="profilePic" src={member?.profilePic} alt="Profile Picture" />
+                        </div>
+                        <div className="infoContainer"> 
+                            <div><b>Name: {member.firstName} {member.lastName}</b></div>
+                            <div>Email: {member.email} </div>
+                            {member.isAdmin ? <div>(Administrator)</div>: null}
+                        </div>
                     </section>
 
                 })
             }
+            </div>
         </article>
     </>
 }
