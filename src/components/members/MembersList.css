@@ -1,28 +1,22 @@
 .members {
-    
-    margin: 1rem;
+  margin: 2rem;
 }
 
 .member {
-    background-color: blanchedalmond;
-    box-shadow: 1px 1px 5px;
-    border-radius: 5px;
-    margin: 1rem;
-    padding: 1rem;
-    justify-content: space-around;
-    display: flex;
-    margin: 1rem;
-    width: 350px;
-    
-}
-
-.profilePic {
-    width: 5rem;
-    border-radius: 10px;
-    box-shadow: 2px 2px grey;
-   
+  background-color: blanchedalmond;
+  box-shadow: 1px 1px 5px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  display: flex;
 }
 
 .infoContainer {
-    margin: 1rem;
+  margin: 1rem;
+}
+
+.profilePic {
+  width: 5rem;
+  border-radius: 10px;
+  box-shadow: 2px 2px grey;
 }

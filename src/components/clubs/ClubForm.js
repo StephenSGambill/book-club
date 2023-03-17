@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { setNewClub, getBooks, getBookClubs, getMembers, setNewClubMember } from "../ApiManager"
-import "./BookClubForm.css"
+import { setNewClub, getBooks, getClubs, getMembers, setNewClubMember } from "../ApiManager"
+import "./ClubForm.css"
 
-export const BookClubForm = () => {
+export const ClubForm = () => {
 
     const [newClub, updateNewClub] = useState({
         active: true
@@ -13,7 +13,10 @@ export const BookClubForm = () => {
     const [clubs, setClubs] = useState([])
     const [books, setBooks] = useState([])
     const [checkedMembers, setCheckedMembers] = useState([])
-    const [newClubMemberObject, setNewClubMemberObject] = useState({})
+    const [newClubMemberObject, setNewClubMemberObject] = useState({
+        memberId: 0,
+        clubId: 0
+    })
 
 
     const localUser = localStorage.getItem("bookClub_member")
@@ -21,7 +24,7 @@ export const BookClubForm = () => {
 
 
     useEffect(() => {
-        Promise.all([getBooks(), getMembers(), getBookClubs()])
+        Promise.all([getBooks(), getMembers(), getClubs()])
             .then(([booksArray, membersArray, clubsArray]) => {
                 setBooks(booksArray)
                 setMembers(membersArray)
@@ -34,16 +37,13 @@ export const BookClubForm = () => {
 
         setNewClub(newClub)
             .then((newClubReturn) => {
-                console.log(newClubReturn)
                 for (let checkedMember of checkedMembers) {
-                    setNewClubMemberObject({
-                        memberId: checkedMember.id,
-                        clubId: newClubReturn.id
-                    })
-                    setNewClubMember(newClubMemberObject)
-
+                    const copy = { ...newClubMemberObject }
+                    copy.memberId = checkedMember
+                    copy.clubId = newClubReturn.id
+                    setNewClubMember(copy)
                 }
-                navigate("/bookClubs")
+                navigate("/clubs")
             })
     }
 
@@ -105,19 +105,17 @@ export const BookClubForm = () => {
             <h3>Choose club members</h3>
             {
                 members
-                    .sort((a, b) => b.lastName > a.lastName ? -1 : 1)
+                    .sort((member1, member2) => member1.lastName > member2.lastName ? 1 : -1)
                     .map((member) => {
                         return (
-                            <div>
-                                <label key={member.id}>
-                                    <input key={member.id}
-                                        type="checkbox"
-                                        value={member.id}
-                                        checked={checkedMembers.includes(member.id)}
-                                        onChange={handleCheckboxChange}
-                                    ></input>
-                                    {member.firstName} {member.lastName}
-                                </label>
+                            <div key={member.id}>
+                                <input key={member.id}
+                                    type="checkbox"
+                                    value={member.id}
+                                    checked={checkedMembers.includes(member.id)}
+                                    onChange={handleCheckboxChange}
+                                />
+                                {member.firstName} {member.lastName}
                             </div>
                         )
                     })

@@ -2,7 +2,7 @@ import { getClubMembers, getMembers } from "../ApiManager";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react"
 import { getBookClubById, getBookById, getChaptersByBook } from "../ApiManager";
-import "./BookClub.css"
+import "./Club.css"
 
 export const BookClub = () => {
     const { chapterId, clubId } = useParams()

@@ -1,0 +1,25 @@
+.bookClubContainer {
+  box-shadow: 1px 1px 5px;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: blanchedalmond;
+  border-radius: 10px;
+}
+
+.bookClub {
+  display: flex;
+  border-bottom: 1px solid brown;
+  padding-bottom: 1rem;
+}
+
+.bookInfo {
+  padding: 1rem;
+}
+
+.bookCover {
+  box-shadow: 1px 1px black;
+}
+
+.clubMembers {
+  padding-bottom: 1rem;
+}

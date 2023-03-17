@@ -1,17 +1,17 @@
 .books {
-    margin: 2rem;
-    
+  margin: 2rem;
 }
 
 .bookContainer {
-    background-color: blanchedalmond;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 1px 1px 3px;
-    margin-bottom: 1rem;
-
+  background-color: blanchedalmond;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px;
+  margin-bottom: 1rem;
+  display: flex;
 }
 
 .bookCover {
-    width: 5rem;
+  width: 5rem;
+  margin-top: 1rem;
 }

@@ -7,13 +7,13 @@ export const AdminNav = () => {
     return (
         <ul className="navbar">
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/bookList">Book List</Link>
+                <Link className="navbar__link" to="/bookList">Books List</Link>
             </li>
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/members">Members List</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/bookClubs">Clubs List</Link>
+                <Link className="navbar__link" to="/clubs">Clubs List</Link>
             </li>
             <li className="navbar__item active">
                 <Link className="navbar__link" to="/profile">My Profile</Link>
@@ -23,7 +23,7 @@ export const AdminNav = () => {
             <li className="navbar__item navbar__logout">
                 <Link className="navbar__link" to="" onClick={() => {
                     localStorage.removeItem("bookclub_member")
-                    navigate("/", {replace: true})
+                    navigate("/", { replace: true })
                 }}>Logout</Link>
             </li>
         </ul>

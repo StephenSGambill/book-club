@@ -6,6 +6,7 @@ import "./BookChapter.css"
 
 
 export const BookChapter = () => {
+
     const { chapterId, clubId } = useParams()
     const [chapterComments, setChapterComments] = useState([])
     const [commentInfo, setCommentInfo] = useState([])
@@ -61,59 +62,58 @@ export const BookChapter = () => {
 
     return <>
         <section className="chapterCommentsContainer">
-        <section className="bookClubInfo">
-            <h2>Book Club: {bookClub.name}</h2>
-            <h2>Book: {bookByChapter.book?.title}</h2>
-            <h2>Chapter Title: {bookByChapter?.title}</h2>
-        </section>
-        <section className="commentsContainer">
-            <h3>Club Member Comments</h3>
-        
-        {
-            chapterComments.map(chapterComment => {
-                return <>
-                    <div key={chapterComment.id} className="card">
-                        <p><b>Posted by: {findMember(chapterComment.memberId)
-                        } on {convertISODate(chapterComment.commentDate)}</b></p>
-                        <p key={chapterComment.id}>{chapterComment.comment}</p>
-                    </div>
-                </>
-            })
-        }
-        </section>
+            <section className="bookClubInfo">
+                <h2>Club: {bookClub.name}</h2>
+                <h2>Book: {bookByChapter.book?.title}</h2>
+                <h2>Chapter Title: {bookByChapter?.title}</h2>
+            </section>
+            <section className="commentsContainer">
+                <h3>Club Member Comments</h3>
 
-        <form
-            className="commentForm">
-            <h3>Add your comment:</h3>
-            <div className="comment-group">
+                {
+                    chapterComments.map(chapterComment => {
+                        return <>
+                            <div key={chapterComment.id} className="card">
+                                <p ><b>Posted by: {findMember(chapterComment.memberId)
+                                } on {convertISODate(chapterComment.commentDate)}</b></p>
+                                <p key={chapterComment.id}>{chapterComment.comment}</p>
+                            </div>
+                        </>
+                    })
+                }
+            </section>
 
-                <input
-                    required autoFocus
-                    type="text"
-                    className="form-control"
-                    placeholder="Type your comment here..."
-                    onChange={
-                        (evt) => {
-                            const copy = { ...newComment }
-                            copy.bookChapterId = bookByChapter.id
-                            copy.bookId = bookByChapter.bookId
-                            copy.clubId = parseInt(clubId)
-                            copy.memberId = memberObject.id
-                            copy.comment = evt.target.value
-                            copy.commentDate = Date()
+            <form
+                className="commentForm">
+                <h3>Add your comment:</h3>
+                <div className="comment-group">
 
-                            setNewComment(copy)
+                    <input
+                        required autoFocus
+                        type="text"
+                        className="form-control"
+                        placeholder="Type your comment here..."
+                        onChange={
+                            (evt) => {
+                                const copy = { ...newComment }
+                                copy.bookChapterId = bookByChapter.id
+                                copy.bookId = bookByChapter.bookId
+                                copy.clubId = parseInt(clubId)
+                                copy.memberId = memberObject.id
+                                copy.comment = evt.target.value
+                                copy.commentDate = Date()
+                                setNewComment(copy)
 
-                        }
-                    } />
-            </div>
+                            }
+                        } />
+                </div>
 
-            <button
-                onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                className="btn btn-primary">
-                Save Comment
-            </button>
-        </form>
+                <button
+                    onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+                    className="btn btn-primary">
+                    Save Comment
+                </button>
+            </form>
         </section>
     </>
 
