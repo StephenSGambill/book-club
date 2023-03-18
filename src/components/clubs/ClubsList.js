@@ -38,8 +38,15 @@ export const ClubsList = () => {
     return (
         <>
             <article className="clubs">
-                <h2>Clubs List   <button className="btn btn-primary"
-                    onClick={() => navigate("/clubs/create")}>Add Club</button></h2>
+
+                {userObject.isAdmin ?
+                    <h2>Clubs List   <button className="btn btn-primary"
+                        onClick={() => navigate("/clubs/create")}>Add Club</button></h2>
+                    : <h2>Clubs List</h2>
+                }
+
+
+
                 {
                     clubs
                         .sort((a, b) => b.name > a.name ? -1 : 1)
@@ -56,9 +63,9 @@ export const ClubsList = () => {
                                             <img className="bookCover" src={club.book.image} />
                                         </div>
                                         <div className="bookInfo">
-                                            <div>Title: {club.book.title}</div>
-                                            <div>Author: {club.book.author}</div>
-                                            <div>Synopsis: {club.book.synopsis}</div>
+                                            <div><b>Title:</b> {club.book.title}</div>
+                                            <div><b>Author:</b> {club.book.author}</div>
+                                            <div><b>Synopsis:</b> {club.book.synopsis}</div>
                                         </div>
                                     </div>
                                     <div className="clubMemberContainer"><b>Club Members:</b></div>
@@ -73,6 +80,16 @@ export const ClubsList = () => {
                                                 ))
                                         }
                                     </article>
+
+                                    {userObject.isAdmin
+                                        ? <div className="edit-button-container">
+                                            <button onClick={(evt) => {
+                                                navigate("")
+                                            }
+                                            } className="edit-button" >Edit Club</button>
+                                        </div>
+                                        : <></>}
+
                                 </section>
                             )
                         })}

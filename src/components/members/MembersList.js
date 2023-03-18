@@ -36,9 +36,9 @@ export const MembersList = () => {
                                 </div>
                                 <div className="infoContainer">
                                     <div><b>Name: {member.firstName} {member.lastName}</b></div>
-                                    <div>Email: {member.email} </div>
+                                    <div><b>Email:</b> {member.email} </div>
                                     {member.isAdmin ? <div>(Administrator)</div> : null}
-                                    <div><b>Book Clubs</b></div>
+                                    <div className="bookClubListing"><b>Book Clubs</b></div>
                                     {
                                         clubMembers
                                             .sort((a, b) => b.club?.name > a.club?.name ? -1 : 1)

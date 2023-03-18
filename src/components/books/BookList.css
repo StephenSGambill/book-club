@@ -1,9 +1,9 @@
 .books {
-  margin: 2rem;
+  margin: 10rem 5rem 0 5rem;
 }
 
 .bookContainer {
-  background-color: blanchedalmond;
+  background-color: #d9d9d9;
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 1px 1px 3px;
@@ -14,4 +14,10 @@
 .bookCover {
   width: 5rem;
   margin-top: 1rem;
+}
+
+.synopsis {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #284b63;
 }

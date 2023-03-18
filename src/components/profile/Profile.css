@@ -1,26 +1,35 @@
-.profile {
-    background-color: blanchedalmond;
-    box-shadow: 1px 1px 5px;
-    border-radius: 10px;
-    margin: 1rem;
-    padding: 1rem;
-    
-}
-
 .profilePic {
-    width: 8rem;
+  width: 8rem;
 }
 
 .clubsContainer {
-    border-top: 1px solid brown;
-    margin-top: 1rem;
-    padding-top: 1rem;
+  border-top: 1px solid #284b63;
+  margin-top: 1rem;
+  padding-top: 1rem;
 }
 
 .btn {
-    float: right;
+  float: right;
+  background-color: #d9d9d9;
 }
 
 .profileContainer {
-    display: flex;
+  display: flex;
+}
+
+.club-link:link {
+  text-decoration: none;
+  color: #284b63;
+}
+.club-link:visited {
+  text-decoration: none;
+  color: #284b63;
+}
+.club-link:hover {
+  text-decoration: none;
+  color: #3c6e71;
+}
+.club-link:active {
+  text-decoration: none;
+  color: #3c6e71;
 }

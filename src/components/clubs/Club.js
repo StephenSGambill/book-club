@@ -67,12 +67,12 @@ export const BookClub = () => {
                         })
                     }
                 </section>
-                <section>
-                    <h3>Chapters (click to go to chapter comments)</h3>
+                <section className="chapterContainer">
+                    <h3 >Chapters (click for chapter comments)</h3>
                     {
                         bookChapters.map(bookChapter => {
                             if (bookChapter.bookId === book.id) {
-                                return <Link key={bookChapter.id} to={`/chapter/${bookChapter.id}/club/${bookClub.id}`}><li >{bookChapter.title}</li></Link>
+                                return <Link className="chapter_link" key={bookChapter.id} to={`/chapter/${bookChapter.id}/club/${bookClub.id}`}><li >{bookChapter.title}</li></Link>
                             }
                         })
                     }

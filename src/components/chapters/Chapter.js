@@ -2,10 +2,10 @@ import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getChapterComments, getMembers, setNewChapterComment, getBookByChapter, getClubById } from "../ApiManager"
-import "./BookChapter.css"
+import "./Chapter.css"
 
 
-export const BookChapter = () => {
+export const Chapter = () => {
 
     const { chapterId, clubId } = useParams()
     const [chapterComments, setChapterComments] = useState([])
@@ -40,8 +40,12 @@ export const BookChapter = () => {
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
-        setNewChapterComment(newComment)
-        window.location.reload(false);
+
+        if (newComment === {}) {
+        } else {
+            setNewChapterComment(newComment)
+            window.location.reload(false)
+        }
     }
 
     const convertISODate = (ISODate) => {
@@ -83,7 +87,7 @@ export const BookChapter = () => {
                 }
             </section>
 
-            <form
+            <fieldset
                 className="commentForm">
                 <h3>Add your comment:</h3>
                 <div className="comment-group">
@@ -106,14 +110,15 @@ export const BookChapter = () => {
 
                             }
                         } />
+                    <button
+                        onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+                        className="btn btn-primary">
+                        Save Comment
+                    </button>
                 </div>
 
-                <button
-                    onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                    className="btn btn-primary">
-                    Save Comment
-                </button>
-            </form>
+
+            </fieldset>
         </section>
     </>
 

@@ -70,6 +70,15 @@ export const setNewClub = (clubInfo) => {
         .then(response => response.json())
 }
 
+export const deleteBook = (bookId) => {
+    return fetch(`http://localhost:8088/books/${bookId}`,
+        { method: "DELETE" })
+        .then(() => {
+            fetch(`http://localhost:8088/bookChapters/&bookId=${bookId}`,
+                { method: "DELETE" })
+        })
+}
+
 
 //****************GETTERS****************
 export const getBooks = () => {

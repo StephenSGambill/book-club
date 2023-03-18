@@ -10,12 +10,13 @@ export const Register = (props) => {
         lastName: "",
         isAdmin: false,
         image: "",
-       // password: ""
+        bio: "",
+        "current-password": ""
     })
     let navigate = useNavigate()
 
     const registerNewMember = () => {
-            setNewMember(member)
+        setNewMember(member)
             .then(createdMember => {
                 if (createdMember.hasOwnProperty("id")) {
                     localStorage.setItem("bookclub_member", JSON.stringify({
@@ -23,15 +24,15 @@ export const Register = (props) => {
                         admin: createdMember.isAdmin
                     }))
 
-                    navigate("/")
+                    navigate("/login")
                 }
             })
     }
 
     const handleRegister = (e) => {
         e.preventDefault()
-       
-            getMemberByEmail(member.email)
+
+        getMemberByEmail(member.email)
             .then(response => {
                 if (response.length > 0) {
                     // Duplicate email. No good.
@@ -45,7 +46,7 @@ export const Register = (props) => {
     }
 
     const updateMember = (evt) => {
-        const copy = {...member}
+        const copy = { ...member }
         copy[evt.target.id] = evt.target.value
         setMember(copy)
     }
@@ -57,14 +58,14 @@ export const Register = (props) => {
                 <fieldset>
                     <label htmlFor="firstName"> First Name </label>
                     <input onChange={updateMember}
-                           type="text" id="firstName" className="form-control"
-                           placeholder="Enter your first name..." required autoFocus />
+                        type="text" id="firstName" className="form-control"
+                        placeholder="Enter your first name..." required autoFocus />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="lastName"> Last Name </label>
                     <input onChange={updateMember}
-                           type="text" id="lastName" className="form-control"
-                           placeholder="Enter your last name..." required/>
+                        type="text" id="lastName" className="form-control"
+                        placeholder="Enter your last name..." required />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="email"> Email address </label>
@@ -80,7 +81,7 @@ export const Register = (props) => {
                 </fieldset>
                 <fieldset>
                     <input onChange={(evt) => {
-                        const copy = {...member}
+                        const copy = { ...member }
                         copy.isAdmin = evt.target.checked
                         setMember(copy)
                     }}

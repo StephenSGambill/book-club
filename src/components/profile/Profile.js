@@ -55,27 +55,29 @@ export const Profile = () => {
                     }
                     }
                 >Edit Profile</button>
-                <div >
-                    <h2>Profile of {currentMember?.firstName} {currentMember?.lastName}</h2>
+
+                <div className="profileCard">
+                    <h2>Welcome! {currentMember?.firstName} {currentMember?.lastName}</h2>
 
 
                     <div className="profileContainer">
                         <img className="profilePic" src={currentMember?.profilePic} alt="Profile Picture" />
                         <div className="infoContainer">
-                            <div>Email: {currentMember?.email}</div>
-                            <div>Bio: {currentMember?.bio} </div>
-                            <div>Admin: {currentMember?.isAdmin ? "Yes" : "No"}</div>
+                            <div><b>Email:</b> {currentMember?.email}</div>
+                            <div><b>Admin:</b> {currentMember?.isAdmin ? "Yes" : "No"}</div>
+                            <div><b>Bio:</b> {currentMember?.bio} </div>
+
                         </div>
 
                     </div>
                     <div className="clubsContainer">
-                        <h3><b>My Clubs:</b></h3>
+                        <h3>My Clubs: (click to go to club)</h3>
                         {
                             memberClubs
                                 .sort((memberClub1, memberClub2) => memberClub1.club?.name > memberClub2.club?.name ? 1 : -1)
                                 .map(memberClub => {
                                     const foundBookClub = clubs.find(bookClub => memberClub.clubId === bookClub.id)
-                                    return <Link key={memberClub.clubId} to={`/club/${foundBookClub?.id}`} ><li >{foundBookClub?.name}</li></Link>
+                                    return <Link className="club-link" key={memberClub.clubId} to={`/club/${foundBookClub?.id}`} ><li >{foundBookClub?.name}</li></Link>
                                 })
                         }
                     </div>

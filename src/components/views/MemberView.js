@@ -1,4 +1,13 @@
 import { Outlet, Route, Routes } from "react-router-dom"
+import { BookList } from "../books/BookList"
+import { ClubsList } from "../clubs/ClubsList"
+import { MembersList } from "../members/MembersList"
+import { Profile } from "../profile/Profile"
+import { BookClub } from "../clubs/Club"
+import { Chapter } from "../chapters/Chapter"
+import { BookForm } from "../books/BookForm"
+import { ClubForm } from "../clubs/ClubForm"
+import { ProfileEdit } from "../profile/ProfileEdit"
 
 export const MemberView = () => {
 
@@ -6,28 +15,27 @@ export const MemberView = () => {
         <Routes>
             <Route path="/" element={
                 <>
-                    <h1>The Book Club</h1>
-                    <h2>Member</h2>
-                   
 
                     <Outlet />
                 </>
             }>
-                {/* <Route path="locations" element={<LocationsList />} />
+                <Route path="bookList" element={<BookList />} />
 
-                <Route path="products" element={<ProductContainer />} />
+                <Route path="members" element={<MembersList />} />
 
-                <Route path="product/create" element={<ProductForm />} />
+                <Route path="profile" element={<Profile />} />
 
-                <Route path="purchases" element={<PurchasesList />} />
+                <Route path="clubs" element={<ClubsList />} />
 
-                <Route path="purchase/:productId/create/" element={<PurchaseForm />} />
+                <Route path="club/:clubId" element={<BookClub />} />
 
-                <Route path="cart" element={<Cart />} />
+                <Route path="chapter/:chapterId/club/:clubId" element={<Chapter />} />
 
-                <Route path="inventory" element={<InventoryContainer />} /> */}
+                <Route path="books/create" element={<BookForm />} />
 
+                <Route path="clubs/create" element={<ClubForm />} />
 
+                <Route path="profile/edit/" element={<ProfileEdit />} />
 
             </Route>
         </Routes>

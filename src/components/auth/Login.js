@@ -12,9 +12,9 @@ export const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault()
 
-            getMemberByEmail(email)
-            
-            
+        getMemberByEmail(email)
+
+
             .then(foundMembers => {
                 if (foundMembers.length === 1) {
                     const member = foundMembers[0]
@@ -22,9 +22,9 @@ export const Login = () => {
                         id: member.id,
                         isAdmin: member.isAdmin
                     }))
-                   
-                    navigate("/")
-                                       
+
+                    navigate("/profile")
+
                 }
                 else {
                     window.alert("Invalid login")
@@ -47,7 +47,7 @@ export const Login = () => {
                             placeholder="Email address"
                             required autoFocus />
                     </fieldset>
-                    
+
                     <fieldset>
                         <button type="submit">
                             Sign in

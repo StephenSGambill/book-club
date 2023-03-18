@@ -7,18 +7,17 @@ export const AdminNav = () => {
     return (
         <ul className="navbar">
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/bookList">Books List</Link>
+                <Link className="navbar__link" to="/profile"><b>My Profile</b></Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/members">Members List</Link>
+                <Link className="navbar__link" to="/bookList">Books</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/clubs">Clubs List</Link>
+                <Link className="navbar__link" to="/clubs">Clubs</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/profile">My Profile</Link>
+                <Link className="navbar__link" to="/members">Members</Link>
             </li>
-
 
             <li className="navbar__item navbar__logout">
                 <Link className="navbar__link" to="" onClick={() => {
@@ -27,6 +26,7 @@ export const AdminNav = () => {
                 }}>Logout</Link>
             </li>
         </ul>
+
     )
 }
 
