@@ -1,15 +1,12 @@
 .bookForm {
-    margin: 5rem;
+  margin: 10rem 5rem 0 5rem;
 }
 
 .form-group {
-   
-    box-shadow: 1px 1px 5px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1rem;
-}
-
-.btn {
-
+  box-shadow: 1px 1px 5px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #d9d9d9;
 }
