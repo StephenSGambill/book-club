@@ -79,6 +79,12 @@ export const deleteBook = (bookId) => {
         })
 }
 
+export const deleteClub = (clubId) => {
+    return fetch(`http://localhost:8088/clubs/${clubId}`,
+        { method: "DELETE" })
+
+}
+
 
 //****************GETTERS****************
 export const getBooks = () => {

@@ -1,7 +1,7 @@
 import { getClubMembers, getMembers } from "../ApiManager"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getClubs } from "../ApiManager"
+import { getClubs, deleteClub } from "../ApiManager"
 import "./ClubsList.css"
 
 export const ClubsList = () => {
@@ -35,14 +35,26 @@ export const ClubsList = () => {
         []
     )
 
+
+    const deleteButtonHandle = (
+        (clubId) => {
+            deleteClub(clubId)
+            getClubs()
+                .then((clubsArray) => {
+                    setClubs(clubsArray)
+                })
+
+        })
+
+
     return (
         <>
             <article className="clubs">
 
                 {userObject.isAdmin ?
-                    <h2>Clubs List   <button className="btn btn-primary"
+                    <h2 className="page-heading">Clubs List   <button className="btn btn-primary"
                         onClick={() => navigate("/clubs/create")}>Add Club</button></h2>
-                    : <h2>Clubs List</h2>
+                    : <h2 className="page-heading">Clubs List</h2>
                 }
 
 
@@ -56,7 +68,8 @@ export const ClubsList = () => {
                             return (
                                 <section className="club" key={`club--${club.id}`}>
                                     <div>
-                                        <b>Club Name: {club.name}</b>
+                                        <h2><b>Club Name: {club.name}</b></h2>
+                                        <div><b>Purpose/Goals:</b>{club.purpose}</div>
                                     </div>
                                     <div className="bookInfoContainer">
                                         <div>
@@ -65,7 +78,7 @@ export const ClubsList = () => {
                                         <div className="bookInfo">
                                             <div><b>Title:</b> {club.book.title}</div>
                                             <div><b>Author:</b> {club.book.author}</div>
-                                            <div><b>Synopsis:</b> {club.book.synopsis}</div>
+                                            <div><b>Synopsis:</b><em>{club.book.synopsis}</em> </div>
                                         </div>
                                     </div>
                                     <div className="clubMemberContainer"><b>Club Members:</b></div>
@@ -83,11 +96,18 @@ export const ClubsList = () => {
 
                                     {userObject.isAdmin
                                         ? <div className="edit-button-container">
-                                            <button onClick={(evt) => {
-                                                navigate("")
-                                            }
-                                            } className="edit-button" >Edit Club</button>
+                                            <button className="edit-button"
+                                                onClick={(evt) => {
+                                                    navigate("")
+                                                }
+                                                }  >Edit Club</button>
+
+                                            <button className="delete-button"
+                                                onClick={() => {
+                                                    deleteButtonHandle(club.id)
+                                                }}>Delete Club</button>
                                         </div>
+
                                         : <></>}
 
                                 </section>

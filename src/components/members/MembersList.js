@@ -23,7 +23,7 @@ export const MembersList = () => {
 
     return <>
         <article className="members" >
-            <h2>Members List</h2>
+            <h2 className="page-heading">Members List</h2>
             <div>
                 {
                     members

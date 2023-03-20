@@ -81,7 +81,7 @@ export const BookForm = () => {
 
     return (<form
         className="bookForm">
-        <h2>Add New Book</h2>
+        <h2 className="page-heading">Add New Book</h2>
 
         <fieldset>
             <div className="form-group">

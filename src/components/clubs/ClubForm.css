@@ -1,12 +1,15 @@
 .clubForm {
-  margin: 1rem;
   margin: 10rem 10rem 0 10rem;
 }
 
-.form-group {
-  border: none;
+.newClubContainer {
+  border-top: 1px solid #284b63;
+  background-color: #d9d9d9;
+  box-shadow: 1px 1px 5px;
+  border-radius: 10px;
+  padding: 1rem;
 }
 
-.form-group {
-  border: none;
+.purpose_box {
+  width: 95%;
 }

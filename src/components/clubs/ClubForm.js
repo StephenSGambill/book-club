@@ -64,10 +64,10 @@ export const ClubForm = () => {
 
     return (<form
         className="clubForm">
-        <h2>Add New Club</h2>
+        <h2 className="page-heading">Add New Club</h2>
 
-        <fieldset className="formContainer">
-            <div className="form-group">
+        <div className="newClubContainer">
+            <div>
                 <label htmlFor="title">New Club Name</label>
                 <input
                     required autoFocus
@@ -80,60 +80,73 @@ export const ClubForm = () => {
                         updateNewClub(copy)
                     }} />
             </div>
-        </fieldset>
-        <fieldset>
-            <select
-                className="bookChoice"
-                onChange={
-                    (evt) => {
-                        const copy = { ...newClub }
-                        copy.bookId = parseInt(evt.target.value)
-                        updateNewClub(copy)
-                    }}>
-                <option key="book" id="book">Choose a book...</option>
+
+            <fieldset>
+                <select
+                    className="bookChoice"
+                    onChange={
+                        (evt) => {
+                            const copy = { ...newClub }
+                            copy.bookId = parseInt(evt.target.value)
+                            updateNewClub(copy)
+                        }}>
+                    <option key="book" id="book">Choose a book...</option>
+                    {
+                        books
+                            .sort((a, b) => b.title > a.title ? -1 : 1)
+                            .map((book) => {
+                                return <option value={book.id} key={book.id}>{book.title} ({book.author})</option>
+                            })
+                    }
+
+                </select>
+            </fieldset>
+            <fieldset>
+                <label htmlFor="purpose">Club Purpose/Goals</label>
+                <textarea
+                    className="purpose_box"
+                    onChange={
+                        (evt) => {
+                            const copy = { ...newClub }
+                            copy.purpose = evt.target.value
+                            updateNewClub(copy)
+                        }}>
+
+
+                </textarea>
+            </fieldset>
+            <fieldset>
+                <h3>Choose club members</h3>
                 {
-                    books
-                        .sort((a, b) => b.title > a.title ? -1 : 1)
-                        .map((book) => {
-                            return <option value={book.id} key={book.id}>{book.title} ({book.author})</option>
+                    members
+                        .sort((member1, member2) => member1.lastName > member2.lastName ? 1 : -1)
+                        .map((member) => {
+                            return (
+                                <div key={member.id}>
+                                    <input key={member.id}
+                                        type="checkbox"
+                                        value={member.id}
+                                        checked={checkedMembers.includes(member.id)}
+                                        onChange={handleCheckboxChange}
+                                    />
+                                    {member.firstName} {member.lastName}
+                                </div>
+                            )
                         })
+
                 }
+                <button
+                    className="btn btn-primary"
+                    onClick={(evt) => {
+                        const copy = { ...newClub }
+                        copy.bookId = evt.target.value
+                        handleSaveButtonClick(evt)
+                    }
+                    }>Save Club
+                </button>
+            </fieldset>
 
-            </select>
-        </fieldset>
-        <fieldset>
-            <h3>Choose club members</h3>
-            {
-                members
-                    .sort((member1, member2) => member1.lastName > member2.lastName ? 1 : -1)
-                    .map((member) => {
-                        return (
-                            <div key={member.id}>
-                                <input key={member.id}
-                                    type="checkbox"
-                                    value={member.id}
-                                    checked={checkedMembers.includes(member.id)}
-                                    onChange={handleCheckboxChange}
-                                />
-                                {member.firstName} {member.lastName}
-                            </div>
-                        )
-                    })
-
-            }
-        </fieldset>
-
-
-        <button
-            className="btn btn-primary"
-            onClick={(evt) => {
-                const copy = { ...newClub }
-                copy.bookId = evt.target.value
-                handleSaveButtonClick(evt)
-            }
-            }>Save Club
-        </button>
-
+        </div>
     </form>
     )
 }

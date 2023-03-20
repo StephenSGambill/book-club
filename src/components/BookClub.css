@@ -45,5 +45,9 @@
 }
 
 body {
-  background-color: #ffffff;
+  background-color: #3c6e71;
+}
+
+.page-heading {
+  color: #d9d9d9;
 }

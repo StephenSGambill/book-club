@@ -27,13 +27,14 @@ export const BookList = () => {
 
     const deleteButtonHandle = (bookId) => {
         deleteBook(bookId)
-        window.location.reload(false)
+            .then(setBooks)
+        //window.location.reload(false)
     }
 
 
     return <>
         <article className="books" >
-            <h2>Books List<button className="btn btn-primary"
+            <h2 className="page-heading">Books List<button className="btn btn-primary"
                 onClick={() => navigate("/books/create")}>Add Book</button></h2>
             {
                 books

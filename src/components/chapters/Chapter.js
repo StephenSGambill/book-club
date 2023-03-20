@@ -10,7 +10,9 @@ export const Chapter = () => {
     const { chapterId, clubId } = useParams()
     const [chapterComments, setChapterComments] = useState([])
     const [commentInfo, setCommentInfo] = useState([])
-    const [newComment, setNewComment] = useState({})
+    let [newComment, setNewComment] = useState({
+        comment: ""
+    })
     const [members, setMembers] = useState([])
     const [bookByChapter, setBookByChapter] = useState([])
     const [bookClub, setBookClub] = useState([])
@@ -30,21 +32,28 @@ export const Chapter = () => {
                 setBookClub(clubArray[0])
 
             })
-            .catch((error) => {
-                console.error(error)
-            })
+
     }, [clubId]
     )
-
 
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
         if (newComment === {}) {
+            return
         } else {
             setNewChapterComment(newComment)
-            window.location.reload(false)
+                .then(() => {
+                    getChapterComments(chapterId)
+                        .then((chapterCommentsArray) => { (setChapterComments(chapterCommentsArray)) })
+
+                    setNewComment({
+                        comment: ""
+                    })
+                })
+
+
         }
     }
 
@@ -97,6 +106,7 @@ export const Chapter = () => {
                         type="text"
                         className="form-control"
                         placeholder="Type your comment here..."
+                        value={newComment.comment}
                         onChange={
                             (evt) => {
                                 const copy = { ...newComment }

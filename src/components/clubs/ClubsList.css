@@ -36,9 +36,11 @@
   text-align: right;
 }
 
-.edit-button {
+.edit-button,
+.delete-button {
   background-color: rgb(229, 237, 234);
   border: none;
   border-radius: 5px;
   box-shadow: 1px 1px 5px;
+  margin-left: 1rem;
 }
