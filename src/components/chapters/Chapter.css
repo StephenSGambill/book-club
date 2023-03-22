@@ -1,18 +1,17 @@
 .chapterCommentsContainer {
   width: 95%;
-  margin: 10rem auto 0 auto;
+  margin: 7rem auto 0 auto;
 }
 
 .bookClubInfo {
   border-radius: 5px;
-  box-shadow: 1px 1px 5px;
   padding: 0.5rem;
   font-size: 0.75rem;
-  background-color: #d9d9d9;
-
-  width: 50%;
+  width: 70%;
   margin: auto;
   text-align: center;
+  color: #d9d9d9;
+  /* line-height: 0.5rem; */
 }
 
 .commentsContainer {
@@ -36,7 +35,7 @@
   padding-bottom: 1rem;
 }
 
-.btn {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
+.comment-group .btn-save {
+  background-color: rgb(218, 245, 218);
+  margin-top: 2rem;
 }

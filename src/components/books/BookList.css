@@ -21,3 +21,10 @@
   padding-top: 1rem;
   border-top: 1px solid #284b63;
 }
+
+.delete-btn {
+  background-color: rgb(250, 212, 218);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px;
+}

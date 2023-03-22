@@ -25,17 +25,25 @@ export const BookList = () => {
     )
 
 
+    const editButtonHandler = (bookId) => {
+        //window.alert("Stretch Goal")
+        navigate(`/book/edit/${bookId}`)
+
+    }
+
     const deleteButtonHandle = (bookId) => {
         deleteBook(bookId)
             .then(setBooks)
-        //window.location.reload(false)
     }
 
 
     return <>
         <article className="books" >
-            <h2 className="page-heading">Books List<button className="btn btn-primary"
-                onClick={() => navigate("/books/create")}>Add Book</button></h2>
+
+            <h2 className="page-heading">Books List
+                <button className="btn btn-primary"
+                    onClick={() => navigate("/books/create")}>Add Book</button></h2>
+
             {
                 books
                     .sort((a, b) => b.title > a.title ? -1 : 1)
@@ -45,18 +53,27 @@ export const BookList = () => {
                             <div>
                                 <img className="bookCover" src={book.image} alt="Book Cover" />
                             </div>
+
                             <div className="bookInfo">
                                 <div><b>Title: {book.title}</b></div>
                                 <div><b>Author: </b>{book?.author}</div>
                                 <div className="synopsis"><b>Synopsis: </b><em>{book.synopsis}</em></div>
                             </div>
+
                             {userObject.isAdmin
-                                ? <div>
+                                ? <><div>
                                     <button className="btn"
                                         onClick={() => {
-                                            deleteButtonHandle(book.id)
-                                        }}>Delete Book</button>
+                                            editButtonHandler(book.id)
+                                        }}>Edit</button>
                                 </div>
+                                    <div>
+                                        <button className="btn, delete-btn"
+                                            onClick={() => {
+                                                deleteButtonHandle(book.id)
+                                            }}>Delete</button>
+                                    </div>
+                                </>
                                 : <></>
                             }
                         </section>

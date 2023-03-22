@@ -9,6 +9,7 @@ import { BookForm } from "../books/BookForm"
 import { ClubForm } from "../clubs/ClubForm"
 import { ProfileEdit } from "../profile/ProfileEdit"
 
+
 export const MemberView = () => {
 
     return (
@@ -36,6 +37,7 @@ export const MemberView = () => {
                 <Route path="clubs/create" element={<ClubForm />} />
 
                 <Route path="profile/edit/" element={<ProfileEdit />} />
+
 
             </Route>
         </Routes>

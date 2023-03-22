@@ -8,6 +8,8 @@ import { Chapter } from "../chapters/Chapter"
 import { BookForm } from "../books/BookForm"
 import { ClubForm } from "../clubs/ClubForm"
 import { ProfileEdit } from "../profile/ProfileEdit"
+import { ClubEdit } from "../clubs/ClubEdit"
+import { BookEdit } from "../books/BookEdit"
 
 export const AdminView = () => {
 
@@ -37,6 +39,11 @@ export const AdminView = () => {
                 <Route path="clubs/create" element={<ClubForm />} />
 
                 <Route path="profile/edit/" element={<ProfileEdit />} />
+
+                <Route path="club/edit/:clubId" element={<ClubEdit />} />
+
+                <Route path="book/edit/:bookId" element={<BookEdit />} />
+
 
 
 

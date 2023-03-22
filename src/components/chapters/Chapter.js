@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getChapterComments, getMembers, setNewChapterComment, getBookByChapter, getClubById } from "../ApiManager"
 import "./Chapter.css"
@@ -76,7 +76,7 @@ export const Chapter = () => {
     return <>
         <section className="chapterCommentsContainer">
             <section className="bookClubInfo">
-                <h2>Club: {bookClub.name}</h2>
+                <h1>Club: {bookClub.name}</h1>
                 <h2>Book: {bookByChapter.book?.title}</h2>
                 <h2>Chapter Title: {bookByChapter?.title}</h2>
             </section>
@@ -85,13 +85,13 @@ export const Chapter = () => {
 
                 {
                     chapterComments.map(chapterComment => {
-                        return <>
+                        return <React.Fragment key={chapterComment.id}>
                             <div key={chapterComment.id} className="card">
-                                <p ><b>Posted by: {findMember(chapterComment.memberId)
+                                <p><b>Posted by: {findMember(chapterComment.memberId)
                                 } on {convertISODate(chapterComment.commentDate)}</b></p>
                                 <p key={chapterComment.id}>{chapterComment.comment}</p>
                             </div>
-                        </>
+                        </React.Fragment>
                     })
                 }
             </section>
@@ -122,7 +122,7 @@ export const Chapter = () => {
                         } />
                     <button
                         onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                        className="btn btn-primary">
+                        className="btn btn-save">
                         Save Comment
                     </button>
                 </div>

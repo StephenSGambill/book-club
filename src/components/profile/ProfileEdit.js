@@ -56,7 +56,7 @@ export const ProfileEdit = () => {
 
                         <div className="infoContainer">
                             <div>
-                                <label htmlFor="firstName">First:      </label>
+                                <label htmlFor="firstName">First:    </label>
                                 <input
                                     required autoFocus
                                     type="text"
@@ -69,7 +69,7 @@ export const ProfileEdit = () => {
                                     }} />
                             </div>
                             <div>
-                                <label htmlFor="lastName">Last:      </label>
+                                <label htmlFor="lastName">Last:    </label>
                                 <input
                                     required
                                     type="text"

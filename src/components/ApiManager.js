@@ -58,6 +58,18 @@ export const updateMemberInfo = (memberId, memberInfo) => {
         .then(response => response.json())
 }
 
+export const updateClubInfo = (clubInfo) => {
+    return fetch(`http://localhost:8088/clubs/${clubInfo.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify(clubInfo)
+    })
+        .then(response => response.json())
+}
+
 export const setNewClub = (clubInfo) => {
     return fetch(`http://localhost:8088/clubs`, {
         method: "POST",
@@ -68,6 +80,30 @@ export const setNewClub = (clubInfo) => {
         body: JSON.stringify(clubInfo)
     })
         .then(response => response.json())
+}
+
+export const updateBookChapterTitle = (bookChapters) => {
+    bookChapters.map(chapter => {
+        return fetch(`http://localhost:8088/bookChapters/${chapter.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(chapter)
+        })
+    }
+    )
+}
+
+
+export const updateBookInfo = (book) => {
+    return fetch(`http://localhost:8088/books/${book.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(book)
+    })
 }
 
 export const deleteBook = (bookId) => {
@@ -83,6 +119,11 @@ export const deleteClub = (clubId) => {
     return fetch(`http://localhost:8088/clubs/${clubId}`,
         { method: "DELETE" })
 
+}
+
+export const deleteClubMember = (clubMemberId) => {
+    return fetch(`http://localhost:8088/clubMembers/${clubMemberId}`,
+        { method: "DELETE" })
 }
 
 
@@ -144,6 +185,12 @@ export const getChaptersByBook = () => {
     return fetch(`http://localhost:8088/bookChapters`)
         .then(res => res.json())
 }
+
+export const getChaptersByBookId = (bookId) => {
+    return fetch(`http://localhost:8088/bookChapters?&bookId=${bookId}`)
+        .then(res => res.json())
+}
+
 
 export const getChapterComments = (id) => {
     return fetch(`http://localhost:8088/chapterComments?&bookChapterId=${id}`)

@@ -41,9 +41,6 @@ export const BookForm = () => {
         updateBookChapterTitleArray(new Array(numChapters).fill(""))
     }
 
-
-
-
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
         const chapters = []
@@ -75,8 +72,6 @@ export const BookForm = () => {
             })
 
         navigate("/bookList")
-
-
     }
 
     return (<form

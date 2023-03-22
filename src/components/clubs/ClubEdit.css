@@ -1,12 +1,39 @@
-.clubForm {
-    margin: 1rem;
+.clubEditForm {
+  margin: 10rem 10rem 0 10rem;
 }
 
-.form-group {
-    border: none;
-    
+.clubEditContainer {
+  border-top: 1px solid #284b63;
+  background-color: #d9d9d9;
+  box-shadow: 1px 1px 5px;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem a uto 0 auto;
+  line-height: 1.5rem;
 }
 
-.form-group {
-    border: none;
-    }
+.clubMembers {
+  margin-top: 1rem;
+  border-top: 1px solid #284b63;
+  padding-top: 1rem;
+  line-height: 1.5rem;
+}
+
+.purpose {
+  width: 90%;
+  height: fit-content;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.memberContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  margin: 0 1rem auto 1rem;
+  height: 1rem;
+}
+
+.remove-btn {
+  background-color: rgb(250, 212, 218);
+}

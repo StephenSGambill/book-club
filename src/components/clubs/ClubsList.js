@@ -1,4 +1,4 @@
-import { getClubMembers, getMembers } from "../ApiManager"
+import { getClubMembers, getMembers, setNewClubMember } from "../ApiManager"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getClubs, deleteClub } from "../ApiManager"
@@ -7,6 +7,7 @@ import "./ClubsList.css"
 export const ClubsList = () => {
     const [clubs, setClubs] = useState([])
     const [clubMembers, setClubMembers] = useState([])
+    const [newClubMemberObj, setNewClubMemberObj] = ([])
 
 
     const localUser = localStorage.getItem("bookclub_member")
@@ -22,7 +23,7 @@ export const ClubsList = () => {
                     setClubs(clubsArray)
                 })
         },
-        []
+        [clubMembers]
     )
 
     useEffect(
@@ -34,6 +35,22 @@ export const ClubsList = () => {
         },
         []
     )
+
+
+    const joinClubButtonHandler = (club) => {
+        const copy = { ...newClubMemberObj }
+        copy.memberId = userObject.id
+        copy.clubId = club.id
+        setNewClubMember(copy)
+            .then(() => {
+                getClubMembers()
+                    .then((clubMembersArray) => {
+                        setClubMembers(clubMembersArray)
+                    })
+            })
+
+    }
+
 
 
     const deleteButtonHandle = (
@@ -68,8 +85,13 @@ export const ClubsList = () => {
                             return (
                                 <section className="club" key={`club--${club.id}`}>
                                     <div>
-                                        <h2><b>Club Name: {club.name}</b></h2>
-                                        <div><b>Purpose/Goals:</b>{club.purpose}</div>
+                                        <h2><b>Club Name: {club.name}</b>
+                                            <button
+                                                onClick={((evt) => {
+                                                    joinClubButtonHandler(club)
+                                                })}
+                                                className="btn">Join Club</button></h2>
+                                        <div><b>Purpose/Goals: </b>{club.purpose}</div>
                                     </div>
                                     <div className="bookInfoContainer">
                                         <div>
@@ -98,7 +120,7 @@ export const ClubsList = () => {
                                         ? <div className="edit-button-container">
                                             <button className="edit-button"
                                                 onClick={(evt) => {
-                                                    navigate("")
+                                                    navigate(`/club/edit/${club.id}`)
                                                 }
                                                 }  >Edit Club</button>
 

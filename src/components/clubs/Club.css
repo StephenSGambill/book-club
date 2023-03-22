@@ -8,7 +8,7 @@
 
 .bookClub {
   display: flex;
-  border-bottom: 1px solid #284b63;
+  /* border-bottom: 1px solid #284b63; */
   padding-bottom: 1rem;
 }
 
