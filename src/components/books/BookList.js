@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getBooks, deleteBook, getChaptersByBookId } from "../ApiManager"
 import { BookForm } from "./BookForm"
+import { Book } from "./Book"
 import "./BookList.css"
 
 export const BookList = () => {
@@ -108,28 +109,29 @@ export const BookList = () => {
                                 <img className="bookCover" src={book.image} alt="Book Cover" />
                             </div>
 
-                            <div className="bookInfo">
-                                <div><b>Title: {book.title}</b></div>
-                                <div><b>Author: </b>{book?.author}</div>
-                                <div><b>Chapters: </b>{chapterCount(book.id)}</div><div className="synopsis"><b>Synopsis: </b><em>{book.synopsis}</em></div>
+                            <Book
+                                title={book.title}
+                                author={book.author}
+                                chapterCount={chapterCount(book.id)}
+                                synopsis={book.synopsis}
+                            />
 
-                            </div>
-
-                            {userObject.isAdmin
-                                ? <><div>
-                                    <button className="btn"
-                                        onClick={() => {
-                                            editButtonHandler(book.id)
-                                        }}>Edit</button>
-                                </div>
-                                    <div>
-                                        <button className="btn, delete-btn"
+                            {
+                                userObject.isAdmin
+                                    ? <><div>
+                                        <button className="btn"
                                             onClick={() => {
-                                                deleteButtonHandle(book.id)
-                                            }}>Delete</button>
+                                                editButtonHandler(book.id)
+                                            }}>Edit</button>
                                     </div>
-                                </>
-                                : <></>
+                                        <div>
+                                            <button className="btn, delete-btn"
+                                                onClick={() => {
+                                                    deleteButtonHandle(book.id)
+                                                }}>Delete</button>
+                                        </div>
+                                    </>
+                                    : <></>
                             }
                         </section>
 

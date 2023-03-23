@@ -37,6 +37,9 @@ export const MembersList = () => {
                                 <div className="infoContainer">
                                     <div><b>Name: {member.firstName} {member.lastName}</b></div>
                                     <div><b>Email:</b> {member.email} </div>
+                                    <div ><b>Bio: </b>
+                                        {member.bio === "" ? <>No bio provided</> : member.bio}
+                                    </div>
                                     {member.isAdmin ? <div>(Administrator)</div> : null}
                                     <div className="bookClubListing"><b>Book Clubs</b></div>
                                     {

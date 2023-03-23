@@ -49,7 +49,7 @@ export const Profile = () => {
         <article  >
 
             <section className="profile" key={currentMember.id}>
-                <button className="btn"
+                <button className="bg-sky-500 hover:bg-sky-700 ..." className="btn"
                     onClick={(evt) => {
                         navigate("/profile/edit")
                     }

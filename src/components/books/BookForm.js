@@ -100,8 +100,8 @@ export const BookForm = () => {
                         copy.author = evt.target.value
                         updateNewBook(copy)
                     }} />
-                <label htmlFor="description">Synopsis</label>
-                <input
+                <label htmlFor="synopsis">Synopsis</label>
+                <textarea
                     required
                     type="text"
                     id="synopsis"
