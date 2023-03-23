@@ -43,9 +43,7 @@ export const BookForm = () => {
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
-        const chapters = []
 
-        console.log(bookChapterTitleArray)
 
         const copy = { ...newBook }
         copy.chapters = bookChapterTitleArray.length
@@ -133,25 +131,25 @@ export const BookForm = () => {
                     onChange={handleChapterNumberChange}
                 />
 
-                <label htmlFor="chapters">Chapter Titles</label>
+                <label htmlFor="chapters"><b>Chapter Titles</b></label>
                 {chapterInputs}
 
-
+                <button
+                    className="bookform-btn"
+                    onClick={(evt) => {
+                        handleSaveButtonClick(evt)
+                    }
+                    }>Save Book
+                </button>
+                <button
+                    className="bookform-btn"
+                    onClick={(evt) => {
+                        navigate("/bookList")
+                    }
+                    }>Cancel
+                </button>
             </div>
-            <button
-                className="btn btn-primary"
-                onClick={(evt) => {
-                    handleSaveButtonClick(evt)
-                }
-                }>Save Book
-            </button>
-            <button
-                className="btn btn-primary"
-                onClick={(evt) => {
-                    navigate("/bookList")
-                }
-                }>Cancel
-            </button>
+
         </fieldset>
 
     </form>

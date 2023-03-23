@@ -28,3 +28,8 @@
   border-radius: 5px;
   box-shadow: 1px 1px 5px;
 }
+
+.search-container {
+  margin-bottom: 1rem;
+  width: 50rem;
+}

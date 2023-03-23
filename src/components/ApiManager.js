@@ -109,10 +109,11 @@ export const updateBookInfo = (book) => {
 export const deleteBook = (bookId) => {
     return fetch(`http://localhost:8088/books/${bookId}`,
         { method: "DELETE" })
-        .then(() => {
-            fetch(`http://localhost:8088/bookChapters/&bookId=${bookId}`,
-                { method: "DELETE" })
-        })
+    //I didn't need this, as associated item in JSON are automatically deletedGoo
+    // .then(() => {
+    //     fetch(`http://localhost:8088/bookChapters/bookId=${bookId}`,
+    //         { method: "DELETE" })
+    // })
 }
 
 export const deleteClub = (clubId) => {

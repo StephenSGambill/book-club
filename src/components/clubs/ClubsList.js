@@ -8,7 +8,10 @@ export const ClubsList = () => {
     const [clubs, setClubs] = useState([])
     const [clubMembers, setClubMembers] = useState([])
     const [newClubMemberObj, setNewClubMemberObj] = ([])
-
+    const [searchTerm, setSearchTerm] = useState('')
+    const filteredClubs = clubs.filter((club) =>
+        club.book.title.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
+    )
 
     const localUser = localStorage.getItem("bookclub_member")
     const userObject = JSON.parse(localUser)
@@ -20,6 +23,7 @@ export const ClubsList = () => {
         () => {
             getClubs()
                 .then((clubsArray) => {
+                    clubsArray.forEach(club => club.bookTitle = club.book.title)
                     setClubs(clubsArray)
                 })
         },
@@ -68,6 +72,7 @@ export const ClubsList = () => {
         <>
             <article className="clubs">
 
+
                 {userObject.isAdmin ?
                     <h2 className="page-heading">Clubs List   <button className="btn btn-primary"
                         onClick={() => navigate("/clubs/create")}>Add Club</button></h2>
@@ -75,9 +80,16 @@ export const ClubsList = () => {
                 }
 
 
-
+                <div className="search-box">
+                    <input
+                        type="text"
+                        placeholder="Search by book title"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                </div>
                 {
-                    clubs
+                    filteredClubs
                         .sort((a, b) => b.name > a.name ? -1 : 1)
                         .map((club) => {
                             let foundClubMembers = clubMembers.filter((clubMember) => club.id === clubMember.clubId)
