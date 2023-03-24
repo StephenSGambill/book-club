@@ -8,8 +8,14 @@
   box-shadow: 1px 1px 5px;
   border-radius: 10px;
   padding: 1rem;
+  min-width: 400px;
 }
 
 .purpose_box {
   width: 95%;
+}
+
+.bookChoice .book {
+  max-width: 100%;
+  width: auto;
 }

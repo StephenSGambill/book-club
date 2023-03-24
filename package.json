@@ -1,7 +1,14 @@
 {
   "name": "book-club",
+  "description": "Simple json-server database to deploy to the cloud",
   "version": "0.1.0",
   "private": true,
+  "main": "server.js",
+  "author": "NSS Student Stephen Gambill",
+  "license": "ISC",
+  "keywords": [
+    "json-server, node, REST API"
+  ],
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -10,7 +17,8 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "json-server": "latest"
   },
   "scripts": {
     "start": "react-scripts start",

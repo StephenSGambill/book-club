@@ -49,7 +49,7 @@ export const Profile = () => {
         <article  >
 
             <section className="profile" key={currentMember.id}>
-                <button className="bg-sky-500 hover:bg-sky-700 ..." className="btn"
+                <button className="btn"
                     onClick={(evt) => {
                         navigate("/profile/edit")
                     }
@@ -71,7 +71,7 @@ export const Profile = () => {
 
                     </div>
                     <div className="clubsContainer">
-                        <h3>My Clubs: (click to go to club)</h3>
+                        <h3>My Clubs:</h3>
                         {
                             memberClubs
                                 .sort((memberClub1, memberClub2) => memberClub1.club?.name > memberClub2.club?.name ? 1 : -1)
