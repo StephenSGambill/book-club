@@ -43,8 +43,6 @@ export const Profile = () => {
 
 
 
-
-
     return <>
         <article  >
 
@@ -66,7 +64,7 @@ export const Profile = () => {
                             <div><b>Email:</b> {currentMember?.email}</div>
                             <div><b>Admin:</b> {currentMember?.isAdmin ? "Yes" : "No"}</div>
                             <div><b>Bio:</b> {currentMember?.bio} </div>
-
+                            <div className="testimage" />
                         </div>
 
                     </div>
