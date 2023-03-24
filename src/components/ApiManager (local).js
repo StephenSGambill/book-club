@@ -96,6 +96,18 @@ export const updateBookChapterTitle = (bookChapters) => {
 }
 
 
+
+export const createBookChapters = (chapter) => {
+    return fetch("http://localhost:8088/bookChapters", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(chapter),
+    })
+
+}
+
 export const updateBookInfo = (book) => {
     return fetch(`http://localhost:8088/books/${book.id}`, {
         method: "PUT",
@@ -105,6 +117,8 @@ export const updateBookInfo = (book) => {
         body: JSON.stringify(book)
     })
 }
+
+
 
 export const deleteBook = (bookId) => {
     return fetch(`http://localhost:8088/books/${bookId}`,

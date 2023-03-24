@@ -95,6 +95,17 @@ export const updateBookChapterTitle = (bookChapters) => {
     )
 }
 
+export const createBookChapters = (chapter) => {
+    return fetch("http://seahorse-app-drfyw.ondigitalocean.app/bookChapters", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(chapter),
+    })
+
+}
+
 
 export const updateBookInfo = (book) => {
     return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/books/${book.id}`, {

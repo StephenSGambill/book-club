@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { setNewBook } from "../ApiManager"
+import { createBookChapters } from "../ApiManager"
 import "./BookForm.css"
 
 export const BookForm = () => {
@@ -74,18 +75,14 @@ export const BookForm = () => {
                         bookId: newBookArray.id,
                         title: chapterTitle || (`Chapter ${i + 1}`)
                     }
-                    fetch("http://localhost:8088/bookChapters", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(chapter),
-                    })
+
+                    createBookChapters(chapter)
 
                 }
+                navigate("/bookList")
             })
 
-        navigate("/bookList")
+
     }
 
     return (<form
