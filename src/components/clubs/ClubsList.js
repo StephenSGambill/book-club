@@ -55,17 +55,23 @@ export const ClubsList = () => {
 
     }
 
+    const confirmDelete = () => {
+        const result = window.confirm("Are you sure you want to delete this club?")
+        return result
+    }
 
-
-    const deleteButtonHandle = (
-        (clubId) => {
+    const deleteButtonHandle = ((clubId) => {
+        const result = confirmDelete()
+        if (result) {
             deleteClub(clubId)
             getClubs()
                 .then((clubsArray) => {
                     setClubs(clubsArray)
                 })
+        }
 
-        })
+
+    })
 
 
     return (

@@ -51,28 +51,36 @@ export const BookList = () => {
 
     }
 
+
+    const confirmDelete = () => {
+        const result = window.confirm("Are you sure you want to delete this book?")
+        return result
+    }
     const deleteButtonHandle = (bookId) => {
-        deleteBook(bookId)
-            .then(() => {
-                getBooks()
-                    .then((booksArray) => {
-                        setBooks(booksArray)
-                        Promise.all(
-                            booksArray.map((book) =>
-                                getChaptersByBookId(book.id).then((chaptersArray) => ({
-                                    bookId: book.id,
-                                    chapterCount: chaptersArray.length,
-                                }))
-                            )
-                        ).then((counts) => {
-                            const newCounts = {}
-                            counts.forEach((count) => {
-                                newCounts[count.bookId] = count.chapterCount;
+        const result = confirmDelete()
+        if (result) {
+            deleteBook(bookId)
+                .then(() => {
+                    getBooks()
+                        .then((booksArray) => {
+                            setBooks(booksArray)
+                            Promise.all(
+                                booksArray.map((book) =>
+                                    getChaptersByBookId(book.id).then((chaptersArray) => ({
+                                        bookId: book.id,
+                                        chapterCount: chaptersArray.length,
+                                    }))
+                                )
+                            ).then((counts) => {
+                                const newCounts = {}
+                                counts.forEach((count) => {
+                                    newCounts[count.bookId] = count.chapterCount;
+                                })
+                                setChapterCounts(newCounts)
                             })
-                            setChapterCounts(newCounts)
                         })
-                    })
-            })
+                })
+        }
 
     }
 

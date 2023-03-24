@@ -73,12 +73,12 @@ export const Register = (props) => {
                         type="email" id="email" className="form-control"
                         placeholder="Email address" required />
                 </fieldset>
-                <fieldset>
+                {/* <fieldset>
                     <label htmlFor="current-password"> Password </label>
                     <input onChange={updateMember}
                         type="current-password" id="current-password" className="form-control"
                         placeholder="Password" required />
-                </fieldset>
+                </fieldset> */}
                 {/* <fieldset>
                     <input onChange={(evt) => {
                         const copy = { ...member }

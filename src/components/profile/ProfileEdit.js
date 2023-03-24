@@ -12,6 +12,7 @@ export const ProfileEdit = () => {
     const localUser = localStorage.getItem("bookclub_member")
     const userObject = JSON.parse(localUser)
 
+
     const navigate = useNavigate()
 
 

@@ -70,11 +70,14 @@ export const BookClub = () => {
                 <section className="chapterContainer">
                     <h3 >Chapters (click for chapter comments)</h3>
                     {
-                        bookChapters.map(bookChapter => {
-                            if (bookChapter.bookId === book.id) {
-                                return <Link className="chapter_link" key={bookChapter.id} to={`/chapter/${bookChapter.id}/club/${bookClub.id}`}><li >{bookChapter.title}</li></Link>
-                            }
-                        })
+                        bookChapters
+                            .sort((chapterA, chapterB) => chapterA.order > chapterB.order ? 1 : -1)
+
+                            .map(bookChapter => {
+                                if (bookChapter.bookId === book.id) {
+                                    return <Link className="chapter_link" key={bookChapter.id} to={`/chapter/${bookChapter.id}/club/${bookClub.id}`}><li >{bookChapter.title}</li></Link>
+                                }
+                            })
                     }
                 </section>
 

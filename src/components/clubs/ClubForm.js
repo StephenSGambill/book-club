@@ -144,6 +144,12 @@ export const ClubForm = () => {
                     }
                     }>Save Club
                 </button>
+                <button className="btn"
+                    onClick={() => {
+                        navigate('/clubs')
+                    }
+
+                    }>Cancel</button>
             </fieldset>
 
         </div>

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getChapterComments, getMembers, setNewChapterComment, getBookByChapter, getClubById } from "../ApiManager"
+import { getChapterComments, getMembers, setNewChapterComment, getBookByChapter, getClubById, deleteComment } from "../ApiManager"
 import "./Chapter.css"
 
 
@@ -46,7 +46,9 @@ export const Chapter = () => {
             setNewChapterComment(newComment)
                 .then(() => {
                     getChapterComments(chapterId)
-                        .then((chapterCommentsArray) => { (setChapterComments(chapterCommentsArray)) })
+                        .then((chapterCommentsArray) => {
+                            (setChapterComments(chapterCommentsArray))
+                        })
 
                     setNewComment({
                         comment: ""
@@ -89,8 +91,23 @@ export const Chapter = () => {
                             <div key={chapterComment.id} className="card">
                                 <p><b>Posted by: {findMember(chapterComment.memberId)
                                 } on {convertISODate(chapterComment.commentDate)}</b></p>
+                                {chapterComment.memberId === memberObject.id
+                                    ? <button className="btn delete"
+                                        onClick={() => {
+                                            deleteComment(chapterComment.id)
+                                            getChapterComments(chapterId)
+                                                .then(chapterCommentsArray => {
+                                                    (setChapterComments(chapterCommentsArray))
+                                                })
+                                        }}
+                                    >Delete</button>
+                                    : null
+                                }
+
                                 <p key={chapterComment.id}>{chapterComment.comment}</p>
+
                             </div>
+
                         </React.Fragment>
                     })
                 }
