@@ -1,7 +1,7 @@
 //****************SETTERS****************
 
 export const setNewMember = (member) => {
-    return fetch("http://localhost:8088/members", {
+    return fetch("https://seahorse-app-drfyw.ondigitalocean.app/members", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -12,7 +12,7 @@ export const setNewMember = (member) => {
 }
 
 export const setNewClubMember = (memberObject) => {
-    return fetch("http://localhost:8088/clubMembers", {
+    return fetch("https://seahorse-app-drfyw.ondigitalocean.app/clubMembers", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -23,7 +23,7 @@ export const setNewClubMember = (memberObject) => {
 }
 
 export const setNewChapterComment = (commentInfo) => {
-    return fetch(`http://localhost:8088/chapterComments`, {
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/chapterComments`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -35,7 +35,7 @@ export const setNewChapterComment = (commentInfo) => {
 }
 
 export const setNewBook = (bookInfo) => {
-    return fetch(`http://localhost:8088/books`, {
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/books`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -47,7 +47,7 @@ export const setNewBook = (bookInfo) => {
 }
 
 export const updateMemberInfo = (memberId, memberInfo) => {
-    return fetch(`http://localhost:8088/members/${memberId}`, {
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/members/${memberId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -59,7 +59,7 @@ export const updateMemberInfo = (memberId, memberInfo) => {
 }
 
 export const updateClubInfo = (clubInfo) => {
-    return fetch(`http://localhost:8088/clubs/${clubInfo.id}`, {
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/clubs/${clubInfo.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -71,7 +71,7 @@ export const updateClubInfo = (clubInfo) => {
 }
 
 export const setNewClub = (clubInfo) => {
-    return fetch(`http://localhost:8088/clubs`, {
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/clubs`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -84,7 +84,7 @@ export const setNewClub = (clubInfo) => {
 
 export const updateBookChapterTitle = (bookChapters) => {
     bookChapters.map(chapter => {
-        return fetch(`http://localhost:8088/bookChapters/${chapter.id}`, {
+        return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/bookChapters/${chapter.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -95,10 +95,8 @@ export const updateBookChapterTitle = (bookChapters) => {
     )
 }
 
-
-
 export const createBookChapters = (chapter) => {
-    return fetch("http://localhost:8088/bookChapters", {
+    return fetch("http://seahorse-app-drfyw.ondigitalocean.app/bookChapters", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -109,7 +107,7 @@ export const createBookChapters = (chapter) => {
 }
 
 export const updateBookInfo = (book) => {
-    return fetch(`http://localhost:8088/books/${book.id}`, {
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/books/${book.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
@@ -118,122 +116,116 @@ export const updateBookInfo = (book) => {
     })
 }
 
-
-
 export const deleteBook = (bookId) => {
-    return fetch(`http://localhost:8088/books/${bookId}`,
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/books/${bookId}`,
         { method: "DELETE" })
-    //I didn't need this, as associated item in JSON are automatically deletedGoo
-    // .then(() => {
-    //     fetch(`http://localhost:8088/bookChapters/bookId=${bookId}`,
-    //         { method: "DELETE" })
-    // })
+
 }
 
 export const deleteClub = (clubId) => {
-    return fetch(`http://localhost:8088/clubs/${clubId}`,
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/clubs/${clubId}`,
         { method: "DELETE" })
 
 }
 
 export const deleteClubMember = (clubMemberId) => {
-    return fetch(`http://localhost:8088/clubMembers/${clubMemberId}`,
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/clubMembers/${clubMemberId}`,
         { method: "DELETE" })
 }
 
 export const deleteMember = (member) => {
-    return fetch(`http://localhost:8088/members/${member.id}`,
+    return fetch(`http://seahorse-app-drfyw.ondigitalocean.app/members/${member.id}`,
         { method: "DELETE" })
 }
 export const deleteComment = (commentId) => {
-    return fetch(`http://localhost:8088/chapterComments/${commentId}`,
+    return fetch(`http://seahorse-app-drfyw.ondigitalocean.app/chapterComments/${commentId}`,
         { method: "DELETE" })
 }
 
 
 //****************GETTERS****************
 export const getBooks = () => {
-    return fetch(`http://localhost:8088/books`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/books`)
         .then(res => res.json())
 }
 
 
 export const getMembers = () => {
-    return fetch(`http://localhost:8088/members`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/members`)
         .then(res => res.json())
 }
 
 
 export const getCurrentUser = (id) => {
-    return fetch(`http://localhost:8088/members?id=${id}`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/members?id=${id}`)
         .then(res => res.json())
 }
 
 export const getClubs = () => {
-    return fetch(`http://localhost:8088/clubs?&_expand=book`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/clubs?&_expand=book`)
         .then(res => res.json())
 }
 
 export const getClubMembers = () => {
-    return fetch(`http://localhost:8088/clubMembers?&_expand=member`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/clubMembers?&_expand=member`)
         .then(res => res.json())
 }
 
 
 export const getClubMembersAndClub = () => {
-    return fetch(`http://localhost:8088/clubMembers?&_expand=club`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/clubMembers?&_expand=club`)
         .then(res => res.json())
 }
 
 export const getClubMemberById = (id) => {
-    return fetch(`http://localhost:8088/clubMembers?&_expand=club&memberId=${id}`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/clubMembers?&_expand=club&memberId=${id}`)
         .then(res => res.json())
 }
 
 export const getBookClubById = (id) => {
-    return fetch(`http://localhost:8088/clubs?&id=${id}`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/clubs?&id=${id}`)
         .then(res => res.json())
 }
 
 export const getBookById = (id) => {
-    return fetch(`http://localhost:8088/books?&id=${id}`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/books?&id=${id}`)
         .then(res => res.json())
 }
 
 export const getCommentsByClub = (id) => {
-    return fetch(`http://localhost:8088/books?`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/books?`)
         .then(res => res.json())
 }
 
 export const getChaptersByBook = () => {
-    return fetch(`http://localhost:8088/bookChapters`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/bookChapters`)
         .then(res => res.json())
 }
 
 export const getChaptersByBookId = (bookId) => {
-    return fetch(`http://localhost:8088/bookChapters?&bookId=${bookId}`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/bookChapters?&bookId=${bookId}`)
         .then(res => res.json())
 }
 
 
 export const getChapterComments = (id) => {
-    return fetch(`http://localhost:8088/chapterComments?&bookChapterId=${id}`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/chapterComments?&bookChapterId=${id}`)
         .then(res => res.json())
 }
 
 export const getBookByChapter = (chapterId) => {
-    return fetch(`http://localhost:8088/bookChapters?&id=${chapterId}&_expand=book`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/bookChapters?&id=${chapterId}&_expand=book`)
         .then(res => res.json())
 }
 
 export const getClubById = (id) => {
-    return fetch(`http://localhost:8088/clubs?&id=${id}`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/clubs?&id=${id}`)
         .then(res => res.json())
 }
 
 
 export const getMemberByEmail = (email) => {
-    return fetch(`http://localhost:8088/members?email=${email}`)
+    return fetch(`https://seahorse-app-drfyw.ondigitalocean.app/members?email=${email}`)
         .then(res => res.json())
 }
 
