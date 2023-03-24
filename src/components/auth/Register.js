@@ -79,7 +79,7 @@ export const Register = (props) => {
                         type="current-password" id="current-password" className="form-control"
                         placeholder="Password" required />
                 </fieldset>
-                <fieldset>
+                {/* <fieldset>
                     <input onChange={(evt) => {
                         const copy = { ...member }
                         copy.isAdmin = evt.target.checked
@@ -87,7 +87,7 @@ export const Register = (props) => {
                     }}
                         type="checkbox" id="isAdmin" />
                     <label htmlFor="email"> I am an Admin </label>
-                </fieldset>
+                </fieldset> */}
                 <fieldset>
                     <button type="submit"> Register </button>
                 </fieldset>
