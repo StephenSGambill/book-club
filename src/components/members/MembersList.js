@@ -105,21 +105,26 @@ export const MembersList = () => {
 
 
                                 </div>
-                                <div>
-                                    <button className="btn delete"
-                                        onClick={() => {
-                                            handleDeleteMemberButton(member)
-                                        }}>Delete Member</button>
-                                    {(userObject.isAdmin && !member.isAdmin)
-                                        ? <button className="btn"
+                                {/* TASK: need to check Admin on this so as to display buttons*/}
+                                {
+                                    <div>
+                                        <button className="btn delete"
                                             onClick={() => {
-                                                handleAdminAddButton(member)
-                                            }}>Add Admin</button>
-                                        : null
-                                    }
+                                                handleDeleteMemberButton(member)
+                                            }}>Delete</button>
+                                        {(userObject.isAdmin && !member.isAdmin)
+                                            ? <button className="btn"
+                                                onClick={() => {
+                                                    handleAdminAddButton(member)
+                                                }}>Add Admin</button>
+                                            : null
+                                        }
+                                    </div>
+                                }
 
 
-                                </div>
+
+
                             </section>
 
                         })

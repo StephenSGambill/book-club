@@ -118,6 +118,7 @@ export const BookEdit = () => {
                 <div><b>Chapters:</b></div>
                 {
                     bookChapters
+                        .sort((chapter1, chapter2) => chapter1.order > chapter2.order ? 1 : -1)
                         .map((bookChapter) => {
                             return (
                                 <div key={bookChapter.id}>
