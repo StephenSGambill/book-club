@@ -142,7 +142,7 @@ export const ClubForm = () => {
                         copy.bookId = evt.target.value
                         handleSaveButtonClick(evt)
                     }
-                    }>Save Club
+                    }>Save
                 </button>
                 <button className="btn"
                     onClick={() => {

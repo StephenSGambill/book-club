@@ -83,7 +83,14 @@ export const Chapter = () => {
                 <h2>Chapter Title: {bookByChapter?.title}</h2>
             </section>
             <section className="commentsContainer">
+                <button className="btn"
+                    onClick={(evt) => {
+                        navigate(`/club/${bookClub.id}`)
+                    }
+                    }
+                >Return to Club</button>
                 <h3>Club Member Comments</h3>
+
 
                 {
                     chapterComments.map(chapterComment => {
@@ -140,7 +147,7 @@ export const Chapter = () => {
                     <button
                         onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                         className="btn btn-save">
-                        Save Comment
+                        Save
                     </button>
                 </div>
 

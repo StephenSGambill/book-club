@@ -108,7 +108,7 @@ export const ClubsList = () => {
                                                 onClick={((evt) => {
                                                     joinClubButtonHandler(club)
                                                 })}
-                                                className="btn">Join Club</button></h2>
+                                                className="btn">Join</button></h2>
                                         <div><b>Purpose/Goals: </b>{club.purpose}</div>
                                     </div>
                                     <div className="bookInfoContainer">
@@ -140,12 +140,12 @@ export const ClubsList = () => {
                                                 onClick={(evt) => {
                                                     navigate(`/club/edit/${club.id}`)
                                                 }
-                                                }  >Edit Club</button>
+                                                }  >Edit</button>
 
                                             <button className="delete-button"
                                                 onClick={() => {
                                                     deleteButtonHandle(club.id)
-                                                }}>Delete Club</button>
+                                                }}>Delete</button>
                                         </div>
 
                                         : <></>}

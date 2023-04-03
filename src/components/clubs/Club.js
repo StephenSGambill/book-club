@@ -10,6 +10,7 @@ export const BookClub = () => {
     const [book, setBook] = useState([])
     const [clubMembers, setClubMembers] = useState([])
     const [bookChapters, setBookChapters] = useState([])
+    const navigate = useNavigate()
 
     useEffect(
         () => {
@@ -44,7 +45,14 @@ export const BookClub = () => {
     return (
         <>
             <article className="bookClubContainer">
-                <h2>{bookClub.name} Book Club</h2>
+                <button className="btn"
+                    onClick={(evt) => {
+                        navigate(`/profile`)
+                    }
+
+                    }>Return to Profile</button>
+
+                <h2 className="header">{bookClub.name} Book Club</h2>
 
                 <section className="bookClub" key={`bookClub--${bookClub.id}`}>
                     <div>

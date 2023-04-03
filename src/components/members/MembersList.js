@@ -8,6 +8,7 @@ export const MembersList = () => {
     const [members, setMembers] = useState([])
     const [clubsInfo, setClubsInfo] = useState([])
     const [clubMembers, setClubMembers] = useState([])
+    const [searchMembers, setSearchMembers] = useState('')
 
 
     const localUser = localStorage.getItem("bookclub_member")
@@ -20,34 +21,29 @@ export const MembersList = () => {
                 setMembers(membersArray)
                 setClubsInfo(clubsArray)
                 setClubMembers(clubMembersArray)
+
             })
 
     },
         []
     )
 
-    const ConfirmModal = ({ message, onConfirm, onCancel }) => {
-        return (
-            <div className="modal-container">
-                <div className="modal-content">
-                    <p>{message}</p>
-                    <div className="modal-buttons">
-                        <button className="confirm" onClick={onConfirm}>Confirm</button>
-                        <button className="cancel" onClick={onCancel}>Cancel</button>
-                    </div>
-                </div>
-            </div>
-        );
-    };
+    const filteredMembers = members.filter(member =>
+        member.lastName.toLowerCase().includes(searchMembers.toLowerCase())
+    )
+
 
     const handleAdminAddButton = (memberInfo) => {
         const copy = { ...memberInfo }
         copy.isAdmin = true
         updateMemberInfo(copy.id, copy)
-        getMembers()
-            .then((membersArray) => {
-                setMembers(membersArray)
+            .then(() => {
+                getMembers()
+                    .then((membersArray) => {
+                        setMembers(membersArray)
+                    })
             })
+
     }
 
     const confirmDelete = () => {
@@ -72,9 +68,17 @@ export const MembersList = () => {
     return <>
         <article className="members" >
             <h2 className="page-heading">Members List</h2>
+            <input
+                className="member_search"
+                type="text"
+                placeholder="Search by last name"
+                onChange={(e) => {
+                    setSearchMembers(e.target.value);
+                }}
+            />
             <div>
                 {
-                    members
+                    filteredMembers
                         .sort((a, b) => b.lastName > a.lastName ? -1 : 1)
                         .map((member) => {
                             return <section className="member" key={`member--${member.id}`} >
@@ -87,7 +91,7 @@ export const MembersList = () => {
                                     <div ><b>Bio: </b>
                                         {member.bio === "" ? <>No bio provided</> : member.bio}
                                     </div>
-                                    {member.isAdmin ? <div >(Administrator)</div> : null}
+
 
                                     <div className="bookClubListing"><b>Book Clubs</b></div>
                                     {
@@ -105,19 +109,23 @@ export const MembersList = () => {
 
 
                                 </div>
-                                {/* TASK: need to check Admin on this so as to display buttons*/}
+
                                 {
                                     <div>
                                         <button className="btn delete"
                                             onClick={() => {
                                                 handleDeleteMemberButton(member)
                                             }}>Delete</button>
-                                        {(userObject.isAdmin && !member.isAdmin)
-                                            ? <button className="btn"
-                                                onClick={() => {
-                                                    handleAdminAddButton(member)
-                                                }}>Add Admin</button>
-                                            : null
+
+                                        {
+
+                                            (userObject.isAdmin && !member.isAdmin)
+                                                ? <button className="btn"
+                                                    onClick={() => {
+                                                        handleAdminAddButton(member)
+                                                    }}>Add Admin</button>
+                                                : <h4 className="btn admin-badge">Admin</h4>
+
                                         }
                                     </div>
                                 }

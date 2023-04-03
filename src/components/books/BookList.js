@@ -9,6 +9,8 @@ export const BookList = () => {
     const [books, setBooks] = useState([])
     const [chapterCounts, setChapterCounts] = useState([])
     const [searchTitle, setSearchTitle] = useState('')
+    const [searchAuthor, setSearchAuthor] = useState('')
+
 
 
 
@@ -43,8 +45,10 @@ export const BookList = () => {
 
 
     const filteredBooks = books.filter(book =>
-        book.title.toLowerCase().includes(searchTitle.toLowerCase())
+        book.title.toLowerCase().includes(searchTitle.toLowerCase()) &&
+        book.author.toLowerCase().includes(searchAuthor.toLowerCase())
     )
+
 
     const editButtonHandler = (bookId) => {
         navigate(`/book/edit/${bookId}`)
@@ -89,7 +93,7 @@ export const BookList = () => {
 
         <article className="books" >
 
-            <h2 className="page-heading">Book List
+            <h2 className="page-heading">Books List
                 <button className="btn btn-primary"
                     onClick={() => navigate("/books/create")}>Add Book</button></h2>
 
@@ -100,6 +104,13 @@ export const BookList = () => {
                     placeholder="Search by title"
                     onChange={(e) => {
                         setSearchTitle(e.target.value);
+                    }}
+                />
+                <input
+                    type="text"
+                    placeholder="Search by author"
+                    onChange={(e) => {
+                        setSearchAuthor(e.target.value);
                     }}
                 />
             </div>

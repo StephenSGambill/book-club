@@ -46,7 +46,7 @@ export const ProfileEdit = () => {
                         handleSaveButtonClick(evt)
                     }
                     }
-                >Save Profile</button>
+                >Save</button>
                 <div >
                     <h2>Profile of {member?.firstName} {member?.lastName}</h2>
 

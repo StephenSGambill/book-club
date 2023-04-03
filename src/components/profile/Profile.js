@@ -52,7 +52,7 @@ export const Profile = () => {
                         navigate("/profile/edit")
                     }
                     }
-                >Edit Profile</button>
+                >Edit</button>
 
                 <div className="profileCard">
                     <h2>Welcome! {currentMember?.firstName} {currentMember?.lastName}</h2>

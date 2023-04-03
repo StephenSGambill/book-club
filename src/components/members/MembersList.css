@@ -32,3 +32,10 @@
   background-color: rgb(250, 206, 213) !important;
   margin-bottom: 1rem !important;
 }
+
+.admin-badge {
+  box-shadow: none !important;
+}
+.member_search {
+  margin-bottom: 1rem;
+}
