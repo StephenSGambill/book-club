@@ -1,7 +1,6 @@
-import { getClubMembers, getMembers } from "../ApiManager";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react"
-import { getBookClubById, getBookById, getChaptersByBook } from "../ApiManager";
+import { getBookClubById, getBookById, getChaptersByBook, getClubMembers } from "../managers/ApiManager";
 import "./Club.css"
 
 export const BookClub = () => {

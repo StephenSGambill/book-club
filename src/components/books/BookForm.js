@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { setNewBook } from "../ApiManager"
-import { createBookChapters } from "../ApiManager"
+import { setNewBook, createBookChapters } from "../managers/ApiManager";
 import "./BookForm.css"
 
 export const BookForm = () => {

@@ -1,7 +1,6 @@
-import { getClubMembers, getMembers, setNewClubMember } from "../ApiManager"
+import { getClubMembers, setNewClubMember, getClubs, deleteClub } from "../managers/ApiManager";
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getClubs, deleteClub } from "../ApiManager"
 import "./ClubsList.css"
 
 export const ClubsList = () => {

@@ -1,4 +1,4 @@
-import { getMembers, getClubs, getClubMembersAndClub, updateMemberInfo, deleteMember } from "../ApiManager";
+import { getMembers, getClubs, getClubMembersAndClub, updateMemberInfo, deleteMember } from "../managers/ApiManager";
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./MembersList.css"
@@ -110,25 +110,30 @@ export const MembersList = () => {
 
                                 </div>
 
-                                {
-                                    <div>
-                                        <button className="btn delete"
-                                            onClick={() => {
-                                                handleDeleteMemberButton(member)
-                                            }}>Delete</button>
+                                <div>
+                                    {userObject.isAdmin && (
+                                        <>
+                                            <button
+                                                className="btn delete"
+                                                onClick={() => {
+                                                    handleDeleteMemberButton(member)
+                                                }}
+                                            >Delete</button>
 
-                                        {
-
-                                            (userObject.isAdmin && !member.isAdmin)
-                                                ? <button className="btn"
+                                            {!member.isAdmin && (
+                                                <button
+                                                    className="btn"
                                                     onClick={() => {
                                                         handleAdminAddButton(member)
-                                                    }}>Add Admin</button>
-                                                : <h4 className="btn admin-badge">Admin</h4>
-
-                                        }
-                                    </div>
-                                }
+                                                    }}
+                                                >Add Admin</button>
+                                            )}
+                                        </>
+                                    )
+                                    }
+                                    {member.isAdmin &&
+                                        <h4 className="btn admin-badge">Admin</h4>}
+                                </div>
 
 
 

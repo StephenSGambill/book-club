@@ -1,8 +1,8 @@
-import { getMembers, getClubMemberById, getClubs } from "../ApiManager";
-import { useEffect, useState } from "react"
+import { getCurrentUser, getClubMemberById, getClubs } from "../managers/ApiManager";
 import { useNavigate } from "react-router-dom"
-import { getCurrentUser } from "../ApiManager";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react"
+
 import "./Profile.css"
 
 

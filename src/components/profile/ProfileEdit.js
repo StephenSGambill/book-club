@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { getCurrentUser, updateMemberInfo } from "../ApiManager";
+import { getCurrentUser, updateMemberInfo } from "../managers/ApiManager";
 import { Link } from "react-router-dom";
 import "./ProfileEdit.css"
 

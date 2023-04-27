@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getMemberByEmail, setNewMember } from "../ApiManager"
+import { getMemberByEmail, setNewMember } from "../managers/ApiManager";
 import "./Login.css"
 
 export const Register = (props) => {

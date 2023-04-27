@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
-import { getMemberByEmail } from "../ApiManager";
+import { getMemberByEmail } from "../managers/ApiManager";
 import "./Login.css"
 
 

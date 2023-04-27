@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { getBookById, updateBookInfo, getChaptersByBookId, updateBookChapterTitle } from "../ApiManager"
+import { getBookById, updateBookInfo, getChaptersByBookId, updateBookChapterTitle } from "../managers/ApiManager";
 import "./BookEdit.css"
 
 export const BookEdit = () => {

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getChapterComments, getMembers, setNewChapterComment, getBookByChapter, getClubById, deleteComment } from "../ApiManager"
+import { getChapterComments, getMembers, setNewChapterComment, getBookByChapter, getClubById, deleteComment } from "../managers/ApiManager";
 import "./Chapter.css"
 
 

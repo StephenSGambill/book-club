@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getBooks, deleteBook, getChaptersByBookId } from "../ApiManager"
+import { getBooks, deleteBook, getChaptersByBookId } from "../managers/ApiManager";
 import { BookForm } from "./BookForm"
 import { Book } from "./Book"
 import "./BookList.css"

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { getBookById, getBookClubById, getClubMembers, updateClubInfo, deleteClubMember } from "../ApiManager"
+import { getBookById, getBookClubById, getClubMembers, updateClubInfo, deleteClubMember } from "../managers/ApiManager";
 import "./ClubEdit.css"
 
 export const ClubEdit = () => {
