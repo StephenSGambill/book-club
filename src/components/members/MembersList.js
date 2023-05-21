@@ -65,6 +65,12 @@ export const MembersList = () => {
         }
     }
 
+    const handleAdminRemoveButton = (updatedMember) => {
+        setMembers(members.map((member) =>
+            member.id === updatedMember.id ? updatedMember : member));
+    };
+
+
     return <>
         <article className="members" >
             <h2 className="page-heading">Members List</h2>
@@ -118,22 +124,40 @@ export const MembersList = () => {
                                                 onClick={() => {
                                                     handleDeleteMemberButton(member)
                                                 }}
-                                            >Delete</button>
+                                            >
+                                                Delete
+                                            </button>
 
-                                            {!member.isAdmin && (
+                                            {/* Conditional rendering based on whether member is admin or not */}
+                                            {member.isAdmin ? (
+                                                <>
+
+                                                    <button
+                                                        className="btn"
+                                                        onClick={() => {
+                                                            // Handle click event to remove admin status
+                                                            handleAdminRemoveButton({ ...member, isAdmin: false })
+                                                        }}
+                                                    >
+                                                        Remove Admin
+                                                    </button>
+                                                </>
+                                            ) : (
                                                 <button
                                                     className="btn"
                                                     onClick={() => {
-                                                        handleAdminAddButton(member)
+                                                        // Handle click event to add admin status
+                                                        handleAdminAddButton({ ...member, isAdmin: true })
                                                     }}
-                                                >Add Admin</button>
+                                                >
+                                                    Add Admin
+                                                </button>
                                             )}
                                         </>
-                                    )
-                                    }
-                                    {member.isAdmin &&
-                                        <h4 className="btn admin-badge">Admin</h4>}
+                                    )}
                                 </div>
+
+
 
 
 
