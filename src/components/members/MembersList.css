@@ -13,6 +13,10 @@
   margin-right: auto;
 }
 
+.memberInfoContainer {
+  margin: 1rem;
+  flex-basis: 50%;
+}
 .infoContainer {
   margin: 1rem;
   flex-basis: 50%;

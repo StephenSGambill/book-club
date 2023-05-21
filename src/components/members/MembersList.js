@@ -91,7 +91,7 @@ export const MembersList = () => {
                                 <div>
                                     <img className="profilePic" src={member?.profilePic} alt="Profile Picture" />
                                 </div>
-                                <div className="infoContainer">
+                                <div className="memberInfoContainer">
                                     <div><b>Name: {member.firstName} {member.lastName}</b></div>
                                     <div><b>Email:</b> {member.email} </div>
                                     <div ><b>Bio: </b>
