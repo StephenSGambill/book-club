@@ -139,7 +139,7 @@ export const MembersList = () => {
                                                             handleAdminRemoveButton({ ...member, isAdmin: false })
                                                         }}
                                                     >
-                                                        Remove Admin
+                                                        Remove as Admin
                                                     </button>
                                                 </>
                                             ) : (
@@ -150,7 +150,7 @@ export const MembersList = () => {
                                                         handleAdminAddButton({ ...member, isAdmin: true })
                                                     }}
                                                 >
-                                                    Add Admin
+                                                    Add as Admin
                                                 </button>
                                             )}
                                         </>
