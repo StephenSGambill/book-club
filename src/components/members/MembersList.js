@@ -33,18 +33,6 @@ export const MembersList = () => {
     )
 
 
-    const handleAdminAddButton = (memberInfo) => {
-        const copy = { ...memberInfo }
-        copy.isAdmin = true
-        updateMemberInfo(copy.id, copy)
-            .then(() => {
-                getMembers()
-                    .then((membersArray) => {
-                        setMembers(membersArray)
-                    })
-            })
-
-    }
 
     const confirmDelete = () => {
         const result = window.confirm("Are you sure you want to delete this member?")
@@ -65,6 +53,18 @@ export const MembersList = () => {
         }
     }
 
+    const handleAdminAddButton = (memberInfo) => {
+        const copy = { ...memberInfo }
+        copy.isAdmin = true
+        updateMemberInfo(copy.id, copy)
+            .then(() => {
+                getMembers()
+                    .then((membersArray) => {
+                        setMembers(membersArray)
+                    })
+            })
+
+    }
     const handleAdminRemoveButton = (updatedMember) => {
         setMembers(members.map((member) =>
             member.id === updatedMember.id ? updatedMember : member));
@@ -156,10 +156,6 @@ export const MembersList = () => {
                                         </>
                                     )}
                                 </div>
-
-
-
-
 
 
                             </section>
