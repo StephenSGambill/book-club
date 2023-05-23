@@ -96,7 +96,7 @@ export const updateBookChapterTitle = (bookChapters) => {
 }
 
 export const createBookChapters = (chapter) => {
-    return fetch("http://seahorse-app-drfyw.ondigitalocean.app/bookChapters", {
+    return fetch("https://the-book-club-hl8o3.ondigitalocean.app/bookChapters", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -134,11 +134,11 @@ export const deleteClubMember = (clubMemberId) => {
 }
 
 export const deleteMember = (member) => {
-    return fetch(`http://seahorse-app-drfyw.ondigitalocean.app/members/${member.id}`,
+    return fetch(`https://the-book-club-hl8o3.ondigitalocean.app/members/${member.id}`,
         { method: "DELETE" })
 }
 export const deleteComment = (commentId) => {
-    return fetch(`http://seahorse-app-drfyw.ondigitalocean.app/chapterComments/${commentId}`,
+    return fetch(`https://the-book-club-hl8o3.ondigitalocean.app/chapterComments/${commentId}`,
         { method: "DELETE" })
 }
 
