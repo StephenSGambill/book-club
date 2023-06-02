@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { getCurrentUser, updateMemberInfo } from "../managers/ApiManager";
+import { getCurrentMember, updateMemberInfo } from "../managers/ApiManager";
 import { Link } from "react-router-dom";
 import "./ProfileEdit.css"
 
@@ -18,10 +18,9 @@ export const ProfileEdit = () => {
 
     useEffect(
         () => {
-            getCurrentUser(userObject.id)
-                .then((currentMemberReturn) => {
-                    const Member = currentMemberReturn[0]
-                    updateMember(Member)
+            getCurrentMember(userObject.id)
+                .then((res) => {
+                    updateMember(res[0])
                 })
         },
         []
@@ -30,12 +29,10 @@ export const ProfileEdit = () => {
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
-
         updateMemberInfo(userObject.id, member)
+        console.log(member)
         navigate("/profile")
     }
-
-
 
 
     return <>
@@ -48,11 +45,11 @@ export const ProfileEdit = () => {
                     }
                 >Save</button>
                 <div >
-                    <h2>Profile of {member?.firstName} {member?.lastName}</h2>
+                    <h2>Profile of {member?.user?.first_name} {member?.user?.last_name}</h2>
 
                     <div className="topContainer">
 
-                        <img className="profilePic" src={member?.profilePic} alt="Profile Picture" />
+                        <img className="profilePic" src={member?.profile_pic} alt="Profile Picture" />
 
 
                         <div className="infoContainer">
@@ -62,10 +59,10 @@ export const ProfileEdit = () => {
                                     required autoFocus
                                     type="text"
                                     className="firstName"
-                                    value={member.firstName}
+                                    value={member?.user?.first_name}
                                     onChange={(evt) => {
                                         const copy = { ...member }
-                                        copy.firstName = evt.target.value
+                                        copy.user.first_name = evt.target.value
                                         updateMember(copy)
                                     }} />
                             </div>
@@ -75,10 +72,10 @@ export const ProfileEdit = () => {
                                     required
                                     type="text"
                                     className="lastName"
-                                    value={member.lastName}
+                                    value={member?.user?.last_name}
                                     onChange={(evt) => {
                                         const copy = { ...member }
-                                        copy.lastName = evt.target.value
+                                        copy.user.last_name = evt.target.value
                                         updateMember(copy)
                                     }} />
                             </div>
@@ -88,10 +85,10 @@ export const ProfileEdit = () => {
                                     required
                                     type="text"
                                     className="email"
-                                    value={member.email}
+                                    value={member?.user?.email}
                                     onChange={(evt) => {
                                         const copy = { ...member }
-                                        copy.email = evt.target.value
+                                        copy.user.email = evt.target.value
                                         updateMember(copy)
                                     }} />
                             </div>
@@ -117,10 +114,10 @@ export const ProfileEdit = () => {
                             required
                             type="textarea"
                             className="pic"
-                            value={member.profilePic}
+                            value={member.profile_pic}
                             onChange={(evt) => {
                                 const copy = { ...member }
-                                copy.profilePic = evt.target.value
+                                copy.profile_pic = evt.target.value
                                 updateMember(copy)
                             }} />
                     </div>
