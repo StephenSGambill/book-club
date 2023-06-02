@@ -1,4 +1,4 @@
-import { getCurrentUser, getClubMemberById, getClubs } from "../managers/ApiManager";
+import { getCurrentMember, getClubMemberById, getClubs } from "../managers/ApiManager";
 import { useNavigate } from "react-router-dom"
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react"
@@ -14,26 +14,24 @@ export const Profile = () => {
 
     const localUser = localStorage.getItem("bookclub_member")
     const userObject = JSON.parse(localUser)
-
     const navigate = useNavigate()
-
 
 
     useEffect(
         () => {
-            getCurrentUser(userObject.id)
-                .then((currentMemberReturn) => {
-                    const Member = currentMemberReturn[0]
-                    setCurrentMember(Member)
-                    getClubMemberById(Member.id)
-                        .then((memberClubsArray) => {
-                            setMemberClubs(memberClubsArray)
-                        })
-                    getClubs()
-                        .then((clubsArray) => {
-                            setClubs(clubsArray)
+            getCurrentMember(userObject.id)
+                .then((res) => {
+                    setCurrentMember(res[0])
 
-                        })
+                    // getClubMemberById(currentMemberReturn)
+                    //     .then((memberClubsArray) => {
+                    //         setMemberClubs(memberClubsArray)
+                    //     })
+                    // getClubs()
+                    //     .then((clubsArray) => {
+                    //         setClubs(clubsArray)
+
+                    //     })
 
 
                 })
@@ -55,14 +53,14 @@ export const Profile = () => {
                 >Edit</button>
 
                 <div className="profileCard">
-                    <h2>Welcome! {currentMember?.firstName} {currentMember?.lastName}</h2>
+                    <h2>Welcome! {currentMember?.user?.first_name} {currentMember?.user?.last_name}</h2>
 
 
                     <div className="profileContainer">
-                        <img className="profilePic" src={currentMember?.profilePic} alt="Profile Picture" />
+                        <img className="profilePic" src={currentMember?.profile_pic} alt="Profile Picture" />
                         <div className="infoContainer">
-                            <div><b>Email:</b> {currentMember?.email}</div>
-                            <div><b>Admin:</b> {currentMember?.isAdmin ? "Yes" : "No"}</div>
+                            <div><b>Email:</b> {currentMember?.user?.email}</div>
+                            <div><b>Admin:</b> {currentMember?.is_staff ? "Yes" : "No"}</div>
                             <div><b>Bio:</b> {currentMember?.bio} </div>
                             <div className="testimage" />
                         </div>

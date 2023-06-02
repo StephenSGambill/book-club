@@ -24,20 +24,20 @@ export const BookList = () => {
         getBooks()
             .then((booksArray) => {
                 setBooks(booksArray)
-                Promise.all(
-                    booksArray.map((book) =>
-                        getChaptersByBookId(book.id).then((chaptersArray) => ({
-                            bookId: book.id,
-                            chapterCount: chaptersArray.length,
-                        }))
-                    )
-                ).then((counts) => {
-                    const newCounts = {}
-                    counts.forEach((count) => {
-                        newCounts[count.bookId] = count.chapterCount;
-                    })
-                    setChapterCounts(newCounts)
-                })
+                // Promise.all(
+                //     booksArray.map((book) =>
+                //         getChaptersByBookId(book.id).then((chaptersArray) => ({
+                //             bookId: book.id,
+                //             chapterCount: chaptersArray.length,
+                //         }))
+                //     )
+                // ).then((counts) => {
+                //     const newCounts = {}
+                //     counts.forEach((count) => {
+                //         newCounts[count.bookId] = count.chapterCount;
+                //     })
+                //     setChapterCounts(newCounts)
+                // })
             })
     }, [])
 
@@ -136,7 +136,7 @@ export const BookList = () => {
                             />
 
                             {
-                                userObject.isAdmin
+                                userObject.is_staff
                                     ? <><div>
                                         <button className="btn"
                                             onClick={() => {

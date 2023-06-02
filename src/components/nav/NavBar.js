@@ -5,9 +5,9 @@ import "./NavBar.css"
 
 export const NavBar = () => {
     const localUser = localStorage.getItem("bookclub_member")
-   	const userObject = JSON.parse(localUser)
+    const userObject = JSON.parse(localUser)
 
-    if (userObject.isAdmin){
+    if (userObject.is_staff) {
         return <AdminNav />
 
     } else {

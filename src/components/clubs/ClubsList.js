@@ -78,7 +78,7 @@ export const ClubsList = () => {
             <article className="clubs">
 
 
-                {userObject.isAdmin ?
+                {userObject.is_staff ?
                     <h2 className="page-heading">Clubs List   <button className="btn btn-primary"
                         onClick={() => navigate("/clubs/create")}>Add Club</button></h2>
                     : <h2 className="page-heading">Clubs List</h2>
@@ -133,7 +133,7 @@ export const ClubsList = () => {
                                         }
                                     </article>
 
-                                    {userObject.isAdmin
+                                    {userObject.is_staff
                                         ? <div className="edit-button-container">
                                             <button className="edit-button"
                                                 onClick={(evt) => {

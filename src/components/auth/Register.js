@@ -1,93 +1,87 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { useNavigate } from "react-router-dom"
-import { getMemberByEmail, setNewMember } from "../managers/ApiManager";
+import { getMemberByUsername } from "../managers/ApiManager"
+import { registerUser } from "../managers/AuthManager"
 import "./Login.css"
 
 export const Register = (props) => {
-    const [member, setMember] = useState({
-        email: "",
-        firstName: "",
-        lastName: "",
-        isAdmin: false,
-        image: "",
-        bio: "",
-        "current-password": ""
-    })
+    const username = useRef()
+    const firstName = useRef()
+    const lastName = useRef()
+    const bio = useRef()
+    const password = useRef()
+    const verifyPassword = useRef()
+    const email = useRef()
+
     let navigate = useNavigate()
 
-    const registerNewMember = () => {
-        setNewMember(member)
-            .then(createdMember => {
-                if (createdMember.hasOwnProperty("id")) {
-                    localStorage.setItem("bookclub_member", JSON.stringify({
-                        id: createdMember.id,
-                        admin: createdMember.isAdmin
-                    }))
 
+    const handleRegister = (e) => {
+        e.preventDefault()
+
+        const newMember = {
+            "username": username.current.value,
+            "first_name": firstName.current.value,
+            "last_name": lastName.current.value,
+            "email": email.current.value,
+            "password": password.current.value,
+            "is_staff": false
+        }
+
+        registerUser(newMember)
+            .then(res => {
+                if ("token" in res) {
+                    const data = {
+                        token: res.token,
+                        is_staff: res.is_staff
+                    }
+                    localStorage.setItem("bookclub_member", JSON.stringify(data))
                     navigate("/login")
                 }
             })
     }
 
-    const handleRegister = (e) => {
-        e.preventDefault()
-
-        getMemberByEmail(member.email)
-            .then(response => {
-                if (response.length > 0) {
-                    // Duplicate email. No good.
-                    window.alert("Account with that email address already exists")
-                }
-                else {
-                    // Good email, create user.
-                    registerNewMember()
-                }
-            })
-    }
-
-    const updateMember = (evt) => {
-        const copy = { ...member }
-        copy[evt.target.id] = evt.target.value
-        setMember(copy)
-    }
 
     return (
         <main style={{ textAlign: "center" }}>
             <form className="form--login" onSubmit={handleRegister}>
                 <h1 className="h3 mb-3 font-weight-normal">Please Register for The Book Club</h1>
                 <fieldset>
+                    <label htmlFor="username"> User Name </label>
+                    <input ref={username}
+                        type="text" id="username" className="form-control"
+                        placeholder="Enter your user Name..." required autoFocus />
+                </fieldset>
+                <fieldset>
                     <label htmlFor="firstName"> First Name </label>
-                    <input onChange={updateMember}
+                    <input ref={firstName}
                         type="text" id="firstName" className="form-control"
-                        placeholder="Enter your first name..." required autoFocus />
+                        placeholder="Enter your first name..." required />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="lastName"> Last Name </label>
-                    <input onChange={updateMember}
+                    <input ref={lastName}
                         type="text" id="lastName" className="form-control"
                         placeholder="Enter your last name..." required />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="email"> Email address </label>
-                    <input onChange={updateMember}
+                    <label htmlFor="email"> Email </label>
+                    <input ref={email}
                         type="email" id="email" className="form-control"
-                        placeholder="Email address" required />
+                        placeholder="Email" required />
                 </fieldset>
-                {/* <fieldset>
-                    <label htmlFor="current-password"> Password </label>
-                    <input onChange={updateMember}
-                        type="current-password" id="current-password" className="form-control"
+                <fieldset>
+                    <label htmlFor="password"> Password </label>
+                    <input ref={password}
+                        type="password" id="password" className="form-control"
                         placeholder="Password" required />
-                </fieldset> */}
-                {/* <fieldset>
-                    <input onChange={(evt) => {
-                        const copy = { ...member }
-                        copy.isAdmin = evt.target.checked
-                        setMember(copy)
-                    }}
-                        type="checkbox" id="isAdmin" />
-                    <label htmlFor="email"> I am an Admin </label>
-                </fieldset> */}
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="verifyPassword"> Verify Password </label>
+                    <input ref={verifyPassword}
+                        type="password" id="verifyPassword" className="form-control"
+                        placeholder="Verify Password" required />
+                </fieldset>
                 <fieldset>
                     <button type="submit"> Register </button>
                 </fieldset>
