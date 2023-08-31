@@ -19,19 +19,19 @@ export const Profile = () => {
 
     useEffect(
         () => {
+
             getCurrentMember(userObject.id)
                 .then((res) => {
-                    setCurrentMember(res[0])
+                    setCurrentMember(res)
+                    getClubMemberById(userObject.id)
+                        .then((memberClubsArray) => {
+                            setMemberClubs(memberClubsArray)
+                        })
+                    getClubs()
+                        .then((clubsArray) => {
+                            setClubs(clubsArray)
 
-                    // getClubMemberById(currentMemberReturn)
-                    //     .then((memberClubsArray) => {
-                    //         setMemberClubs(memberClubsArray)
-                    //     })
-                    // getClubs()
-                    //     .then((clubsArray) => {
-                    //         setClubs(clubsArray)
-
-                    //     })
+                        })
 
 
                 })
@@ -53,13 +53,13 @@ export const Profile = () => {
                 >Edit</button>
 
                 <div className="profileCard">
-                    <h2>Welcome! {currentMember?.user?.first_name} {currentMember?.user?.last_name}</h2>
+                    <h2>Welcome! {currentMember?.firstName} {currentMember?.lastName}</h2>
 
 
                     <div className="profileContainer">
-                        <img className="profilePic" src={currentMember?.profile_pic} alt="Profile Picture" />
+                        <img className="profilePic" src={currentMember?.profilePic} alt="Profile Picture" />
                         <div className="infoContainer">
-                            <div><b>Email:</b> {currentMember?.user?.email}</div>
+                            <div><b>Email:</b> {currentMember?.email}</div>
                             <div><b>Admin:</b> {currentMember?.is_staff ? "Yes" : "No"}</div>
                             <div><b>Bio:</b> {currentMember?.bio} </div>
                             <div className="testimage" />

@@ -39,6 +39,7 @@ export const MemberView = () => {
                 <Route path="profile/edit/" element={<ProfileEdit />} />
 
 
+
             </Route>
         </Routes>
     )

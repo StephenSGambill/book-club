@@ -3,21 +3,19 @@ import { useNavigate, useParams } from "react-router-dom"
 import { getBookById, getBookClubById, getClubMembers, updateClubInfo, deleteClubMember } from "../managers/ApiManager";
 import "./ClubEdit.css"
 
+
 export const ClubEdit = () => {
     const { clubId } = useParams()
     const [club, setClub] = useState([])
     const [book, setBook] = useState([])
     const [clubMembers, setClubMembers] = useState([])
-
-
-
-
     const navigate = useNavigate()
 
-
     useEffect(() => {
+        console.log("hit")
         getBookClubById(clubId)
             .then((clubInfo) => {
+                console.log(clubInfo)
                 const club = clubInfo[0]
                 setClub(club)
                 getBookById(club.bookId)
@@ -34,6 +32,7 @@ export const ClubEdit = () => {
             })
 
     }, [])
+
 
 
     const deleteMemberButton = (clubMemberId) => {

@@ -40,7 +40,7 @@ export const AdminView = () => {
 
                 <Route path="profile/edit/" element={<ProfileEdit />} />
 
-                <Route path="club/edit/:clubId" element={<ClubEdit />} />
+                <Route exact path="club/edit/:clubId" element={<ClubEdit />} />
 
                 <Route path="book/edit/:bookId" element={<BookEdit />} />
 

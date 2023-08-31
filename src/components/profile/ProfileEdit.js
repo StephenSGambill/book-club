@@ -20,7 +20,8 @@ export const ProfileEdit = () => {
         () => {
             getCurrentMember(userObject.id)
                 .then((res) => {
-                    updateMember(res[0])
+                    updateMember(res)
+
                 })
         },
         []
@@ -44,12 +45,13 @@ export const ProfileEdit = () => {
                     }
                     }
                 >Save</button>
+
                 <div >
-                    <h2>Profile of {member?.user?.first_name} {member?.user?.last_name}</h2>
+                    <h2>Profile of {member?.firstName} {member?.lastName}</h2>
 
                     <div className="topContainer">
 
-                        <img className="profilePic" src={member?.profile_pic} alt="Profile Picture" />
+                        <img className="profilePic" src={member?.profilePic} alt="Profile Picture" />
 
 
                         <div className="infoContainer">
@@ -59,10 +61,10 @@ export const ProfileEdit = () => {
                                     required autoFocus
                                     type="text"
                                     className="firstName"
-                                    value={member?.user?.first_name}
+                                    value={member?.firstName}
                                     onChange={(evt) => {
                                         const copy = { ...member }
-                                        copy.user.first_name = evt.target.value
+                                        copy.firstName = evt.target.value
                                         updateMember(copy)
                                     }} />
                             </div>
@@ -72,10 +74,10 @@ export const ProfileEdit = () => {
                                     required
                                     type="text"
                                     className="lastName"
-                                    value={member?.user?.last_name}
+                                    value={member?.lastName}
                                     onChange={(evt) => {
                                         const copy = { ...member }
-                                        copy.user.last_name = evt.target.value
+                                        copy.lastName = evt.target.value
                                         updateMember(copy)
                                     }} />
                             </div>
@@ -85,10 +87,10 @@ export const ProfileEdit = () => {
                                     required
                                     type="text"
                                     className="email"
-                                    value={member?.user?.email}
+                                    value={member?.email}
                                     onChange={(evt) => {
                                         const copy = { ...member }
-                                        copy.user.email = evt.target.value
+                                        copy.email = evt.target.value
                                         updateMember(copy)
                                     }} />
                             </div>
@@ -100,7 +102,7 @@ export const ProfileEdit = () => {
                             required
                             type="text"
                             className="bio"
-                            value={member.bio}
+                            value={member?.bio}
 
                             onChange={(evt) => {
                                 const copy = { ...member }
@@ -114,10 +116,10 @@ export const ProfileEdit = () => {
                             required
                             type="textarea"
                             className="pic"
-                            value={member.profile_pic}
+                            value={member.profilePic}
                             onChange={(evt) => {
                                 const copy = { ...member }
-                                copy.profile_pic = evt.target.value
+                                copy.profilePic = evt.target.value
                                 updateMember(copy)
                             }} />
                     </div>

@@ -1,35 +1,33 @@
-import React, { useState, useRef } from "react"
+import React, { useState } from "react"
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
-import { loginUser } from "../managers/AuthManager"
-
+import { getMemberByEmail } from "../managers/ApiManager";
 import "./Login.css"
 
 
 export const Login = () => {
-    const [userName, setUserName] = useState("")
-    const [password, setPassword] = useState("")
+    const [email, set] = useState("")
     const navigate = useNavigate()
 
     const handleLogin = (e) => {
         e.preventDefault()
-        const user = {
-            username: userName,
-            password: password
+
+        getMemberByEmail(email)
 
 
-        }
+            .then(foundMembers => {
+                if (foundMembers.length === 1) {
+                    const member = foundMembers[0]
+                    localStorage.setItem("bookclub_member", JSON.stringify({
+                        id: member.id,
+                        isAdmin: member.isAdmin
+                    }))
 
-        loginUser(user)
-            .then(res => {
-                if ("valid" in res && res.valid && "token" in res) {
-                    const data = {
-                        id: res.id,
-                        token: res.token,
-                        is_staff: res.is_staff
-                    }
-                    localStorage.setItem("bookclub_member", JSON.stringify(data))
-                    navigate("/")
+                    navigate("/profile")
+
+                }
+                else {
+                    window.alert("Invalid login")
                 }
             })
     }
@@ -41,27 +39,15 @@ export const Login = () => {
                     <h1 >The Book Club</h1>
                     <h2 className="page-heading">Please sign in</h2>
                     <fieldset>
-                        <label htmlFor="userName"> User Name </label>
-                        <input
-                            type="text"
-                            id="userName"
+                        <label htmlFor="inputEmail"> Email address </label>
+                        <input type="email"
+                            value={email}
+                            onChange={evt => set(evt.target.value)}
                             className="form-control"
-                            placeholder="Enter your user Name..."
-                            onChange={evt => setUserName(evt.target.value)}
-                            required autoFocus
-                        />
+                            placeholder="Email address"
+                            required autoFocus />
                     </fieldset>
-                    <fieldset>
-                        <label htmlFor="password"> Password </label>
-                        <input
-                            type="password"
-                            id="password"
-                            className="form-control"
-                            placeholder="Password"
-                            onChange={evt => setPassword(evt.target.value)}
-                            required
-                            autoComplete="current-password" />
-                    </fieldset>
+
                     <fieldset>
                         <button type="submit">
                             Sign in
@@ -75,4 +61,3 @@ export const Login = () => {
         </main>
     )
 }
-

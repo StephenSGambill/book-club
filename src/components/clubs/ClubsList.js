@@ -18,6 +18,7 @@ export const ClubsList = () => {
     const navigate = useNavigate()
 
 
+
     useEffect(
         () => {
             getClubs()
@@ -78,7 +79,7 @@ export const ClubsList = () => {
             <article className="clubs">
 
 
-                {userObject.is_staff ?
+                {userObject.isAdmin ?
                     <h2 className="page-heading">Clubs List   <button className="btn btn-primary"
                         onClick={() => navigate("/clubs/create")}>Add Club</button></h2>
                     : <h2 className="page-heading">Clubs List</h2>
@@ -133,7 +134,7 @@ export const ClubsList = () => {
                                         }
                                     </article>
 
-                                    {userObject.is_staff
+                                    {userObject.isAdmin
                                         ? <div className="edit-button-container">
                                             <button className="edit-button"
                                                 onClick={(evt) => {
