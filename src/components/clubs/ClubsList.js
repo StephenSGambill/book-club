@@ -80,7 +80,7 @@ export const ClubsList = () => {
 
 
                 {userObject.isAdmin ? <>
-                    <h2 className="page-heading">Clubs List</h2><button className="btn btn-primary"
+                    <h2 className="page-heading">Clubs List</h2><button className="btn add-btn"
                         onClick={() => navigate("/clubs/create")}>Add Club</button></>
                     : <h2 className="page-heading">Clubs List</h2>
                 }
@@ -107,7 +107,7 @@ export const ClubsList = () => {
                                             onClick={((evt) => {
                                                 joinClubButtonHandler(club)
                                             })}
-                                            className="btn">Join</button>
+                                            className="btn join-btn">Join</button>
                                         <h2><b>Club Name: {club.name}</b>
                                         </h2>
                                         <div><b>Purpose/Goals: </b>{club.purpose}</div>
@@ -137,13 +137,13 @@ export const ClubsList = () => {
 
                                     {userObject.isAdmin
                                         ? <div className="edit-button-container">
-                                            <button className="edit-button"
+                                            <button className="btn edit-btn"
                                                 onClick={(evt) => {
                                                     navigate(`/club/edit/${club.id}`)
                                                 }
                                                 }  >Edit</button>
 
-                                            <button className="delete-button"
+                                            <button className="btn delete-btn"
                                                 onClick={() => {
                                                     deleteButtonHandle(club.id)
                                                 }}>Delete</button>

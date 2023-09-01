@@ -59,7 +59,7 @@ export const BookEdit = () => {
                     }}
                 >Save Info</button>
                 <button
-                    className="btn return-btn"
+                    className="btn"
                     onClick={() => {
                         returnButton()
                     }}

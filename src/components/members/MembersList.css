@@ -22,12 +22,6 @@
   flex-basis: 50%;
 }
 
-.profilePic {
-  width: 5rem;
-  border-radius: 10px;
-  box-shadow: 2px 2px grey;
-}
-
 .bookClubListing {
   margin-top: 1rem;
 }
@@ -37,4 +31,10 @@
 }
 .member_search {
   margin-bottom: 1rem;
+}
+
+.membersProfilePic {
+  width: 100px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px gray;
 }

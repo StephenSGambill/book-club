@@ -43,28 +43,28 @@ export const Profile = () => {
 
     return <>
         <article  >
-
             <section className="profile" key={currentMember.id}>
-                <button className="btn"
-                    onClick={(evt) => {
-                        navigate("/profile/edit")
-                    }
-                    }
-                >Edit</button>
-
                 <div className="profileCard">
+                    <button className="btn profile-edit-btn edit-btn"
+                        onClick={(evt) => {
+                            navigate("/profile/edit")
+                        }
+                        }
+                    >Edit</button>
                     <h2>Welcome! {currentMember?.firstName} {currentMember?.lastName}</h2>
 
                     <div className="profileContainer">
-                        <img className="profilePic" src={currentMember?.profilePic} alt="Profile Picture" />
+                        <div className="img-container">
+                            <img className="profilePic" src={currentMember?.profilePic} alt="Profile Picture" />
+                        </div>
                         <div className="infoContainer">
                             <div><b>Email:</b> {currentMember?.email}</div>
                             <div><b>Admin:</b> {currentMember?.isAdmin ? "Yes" : "No"}</div>
                             <div><b>Bio:</b> {currentMember?.bio} </div>
                             <div className="testimage" />
                         </div>
-
                     </div>
+
 
                     <div className="clubsContainer">
                         <h3>My Clubs:</h3>

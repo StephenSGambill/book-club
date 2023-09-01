@@ -9,3 +9,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.btn {
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 4px;
+}
+
+.profilePic {
+  border-radius: 10px;
+  box-shadow: 2px 2px grey;
+  width: 8rem;
+}
+
+.edit-btn {
+  background-color: rgb(175, 175, 248);
+}
+
+.delete-btn {
+  background-color: rgb(255, 180, 205);
+}
+
+.save-btn {
+  background-color: rgb(209, 244, 196);
+}
+
+.add-btn {
+  background-color: rgb(215, 180, 255);
+}
+
+.join-btn {
+  background-color: rgb(247, 236, 159);
+}

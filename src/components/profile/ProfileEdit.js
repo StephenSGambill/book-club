@@ -38,7 +38,7 @@ export const ProfileEdit = () => {
     return <>
         <article  >
             <section className="profile" key={member?.id}>
-                <button className="btn"
+                <button className="btn save-profile-btn save-btn"
                     onClick={(evt) => {
                         handleSaveButtonClick(evt)
                     }
@@ -49,10 +49,9 @@ export const ProfileEdit = () => {
                     <h2>Profile of {member?.firstName} {member?.lastName}</h2>
 
                     <div className="topContainer">
-
-                        <img className="profilePic" src={member?.profilePic} alt="Profile Picture" />
-
-
+                        <div className="image-container">
+                            <img className="profilePic" src={member?.profilePic} alt="Profile Picture" />
+                        </div>
                         <div className="infoContainer">
                             <div>
                                 <label htmlFor="firstName">First:    </label>

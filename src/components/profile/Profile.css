@@ -1,9 +1,22 @@
-.profilePic {
-  width: 8rem;
-}
-
 .profileContainer {
   display: flex;
+}
+
+.img-container {
+  flex: 0 0 auto;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.profilePic {
+  max-width: 100%;
+  height: auto;
+}
+
+.infoContainer {
+  flex: 1;
 }
 
 .clubsContainer {
@@ -27,4 +40,8 @@
 .club-link:active {
   text-decoration: none;
   color: #3c6e71;
+}
+
+.profile-edit-btn {
+  float: right;
 }

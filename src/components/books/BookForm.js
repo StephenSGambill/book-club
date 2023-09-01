@@ -148,14 +148,14 @@ export const BookForm = () => {
                 {chapterInputs}
 
                 <button
-                    className="bookform-btn"
+                    className="btn"
                     onClick={(evt) => {
                         handleSaveButtonClick(evt)
                     }
                     }>Save Book
                 </button>
                 <button
-                    className="bookform-btn"
+                    className="btn"
                     onClick={(evt) => {
                         navigate("/bookList")
                     }

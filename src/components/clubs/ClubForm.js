@@ -136,7 +136,7 @@ export const ClubForm = () => {
 
                 }
                 <button
-                    className="btn btn-primary"
+                    className="btn "
                     onClick={(evt) => {
                         const copy = { ...newClub }
                         copy.bookId = evt.target.value

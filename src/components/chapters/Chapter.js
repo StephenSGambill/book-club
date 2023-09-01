@@ -98,8 +98,11 @@ export const Chapter = () => {
                             <div key={chapterComment.id} className="card">
                                 <p><b>Posted by: {findMember(chapterComment.memberId)
                                 } on {convertISODate(chapterComment.commentDate)}</b></p>
+
+
+                                <p key={chapterComment.id}>{chapterComment.comment}</p>
                                 {chapterComment.memberId === memberObject.id
-                                    ? <button className="btn delete"
+                                    ? <button className="btn "
                                         onClick={() => {
                                             deleteComment(chapterComment.id)
                                             getChapterComments(chapterId)
@@ -107,12 +110,9 @@ export const Chapter = () => {
                                                     (setChapterComments(chapterCommentsArray))
                                                 })
                                         }}
-                                    >Delete</button>
+                                    >Delete my comment</button>
                                     : null
                                 }
-
-                                <p key={chapterComment.id}>{chapterComment.comment}</p>
-
                             </div>
 
                         </React.Fragment>
@@ -146,7 +146,7 @@ export const Chapter = () => {
                         } />
                     <button
                         onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-                        className="btn btn-save">
+                        className="btn">
                         Save
                     </button>
                 </div>

@@ -89,7 +89,7 @@ export const MembersList = () => {
                         .map((member) => {
                             return <section className="member" key={`member--${member.id}`} >
                                 <div>
-                                    <img className="profilePic" src={member?.profilePic} alt="Profile Picture" />
+                                    <img className="membersProfilePic" src={member?.profilePic} alt="Profile Picture" />
                                 </div>
                                 <div className="memberInfoContainer">
                                     <div><b>Name: {member.firstName} {member.lastName}</b></div>
@@ -121,7 +121,7 @@ export const MembersList = () => {
                                     {userObject.isAdmin && (
                                         <>
                                             <button
-                                                className="btn delete"
+                                                className="btn delete-btn"
                                                 onClick={() => {
                                                     handleDeleteMemberButton(member)
                                                 }}
@@ -133,7 +133,7 @@ export const MembersList = () => {
                                                 <>
 
                                                     <button
-                                                        className="btn"
+                                                        className="btn "
                                                         onClick={() => {
                                                             handleAdminRemoveButton({ ...member, isAdmin: false })
                                                         }}

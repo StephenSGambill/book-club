@@ -95,7 +95,7 @@ export const BookList = () => {
 
             <h2 className="page-heading">Books List
             </h2>
-            <button className="btn btn-primary"
+            <button className="btn add-btn "
                 onClick={() => navigate("/books/create")}>Add Book</button>
 
 
@@ -139,13 +139,13 @@ export const BookList = () => {
                             {
                                 userObject.isAdmin
                                     ? <><div>
-                                        <button className="btn"
+                                        <button className="btn edit-btn"
                                             onClick={() => {
                                                 editButtonHandler(book.id)
                                             }}>Edit</button>
                                     </div>
                                         <div>
-                                            <button className="btn, delete-btn"
+                                            <button className="btn delete-btn"
                                                 onClick={() => {
                                                     deleteButtonHandle(book.id)
                                                 }}>Delete</button>

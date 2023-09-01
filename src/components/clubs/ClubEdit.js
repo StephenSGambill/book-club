@@ -51,7 +51,7 @@ export const ClubEdit = () => {
             <h2 className="page-heading">Edit Club</h2>
 
             <section className="clubEditContainer" key={club?.id}>
-                <button className="btn"
+                <button className="btn save-btn"
                     onClick={(evt) => {
                         handleSaveButtonClick(evt)
                     }
@@ -94,7 +94,7 @@ export const ClubEdit = () => {
                                     ? <div className="memberContainer" key={clubMember.id}>
                                         <li >{clubMember.member.firstName} {clubMember.member.lastName}
                                         </li>
-                                        <button className="btn remove-btn"
+                                        <button className="btn delete-btn"
                                             onClick={(event) => {
                                                 deleteMemberButton(clubMember.id)
 
