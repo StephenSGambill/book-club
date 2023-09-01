@@ -15,7 +15,6 @@ export const BookEdit = () => {
 
 
     useEffect(() => {
-        console.log("hit")
         getBookById(bookId)
             .then((bookArray) => {
                 setBook(bookArray[0])

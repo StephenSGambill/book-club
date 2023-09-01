@@ -7,7 +7,7 @@ export const NavBar = () => {
     const localUser = localStorage.getItem("bookclub_member")
     const userObject = JSON.parse(localUser)
 
-    if (userObject.is_staff) {
+    if (userObject.isAdmin) {
         return <AdminNav />
 
     } else {

@@ -17,8 +17,6 @@ export const AdminView = () => {
         <Routes>
             <Route path="/" element={
                 <>
-                    {/* <h1 className="pageTitle">The Book Club</h1> */}
-
                     <Outlet />
                 </>
             }>

@@ -11,10 +11,6 @@
   height: 8rem;
 }
 
-.btn {
-  float: right;
-}
-
 .infoContainer {
   display: block;
   justify-content: space-around;

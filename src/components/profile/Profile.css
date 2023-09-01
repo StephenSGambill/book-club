@@ -2,19 +2,14 @@
   width: 8rem;
 }
 
+.profileContainer {
+  display: flex;
+}
+
 .clubsContainer {
   border-top: 1px solid #284b63;
   margin-top: 1rem;
   padding-top: 1rem;
-}
-
-.btn {
-  float: right;
-  background-color: #d9d9d9;
-}
-
-.profileContainer {
-  display: flex;
 }
 
 .club-link:link {

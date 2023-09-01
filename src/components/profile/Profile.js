@@ -55,17 +55,17 @@ export const Profile = () => {
                 <div className="profileCard">
                     <h2>Welcome! {currentMember?.firstName} {currentMember?.lastName}</h2>
 
-
                     <div className="profileContainer">
                         <img className="profilePic" src={currentMember?.profilePic} alt="Profile Picture" />
                         <div className="infoContainer">
                             <div><b>Email:</b> {currentMember?.email}</div>
-                            <div><b>Admin:</b> {currentMember?.is_staff ? "Yes" : "No"}</div>
+                            <div><b>Admin:</b> {currentMember?.isAdmin ? "Yes" : "No"}</div>
                             <div><b>Bio:</b> {currentMember?.bio} </div>
                             <div className="testimage" />
                         </div>
 
                     </div>
+
                     <div className="clubsContainer">
                         <h3>My Clubs:</h3>
                         {
@@ -77,6 +77,7 @@ export const Profile = () => {
                                 })
                         }
                     </div>
+
                 </div>
             </section>
         </article>

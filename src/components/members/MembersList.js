@@ -55,7 +55,7 @@ export const MembersList = () => {
 
     const handleAdminAddButton = (memberInfo) => {
         const copy = { ...memberInfo }
-        copy.is_staff = true
+        copy.isAdmin = true
         updateMemberInfo(copy.id, copy)
             .then(() => {
                 getMembers()
@@ -94,6 +94,7 @@ export const MembersList = () => {
                                 <div className="memberInfoContainer">
                                     <div><b>Name: {member.firstName} {member.lastName}</b></div>
                                     <div><b>Email:</b> {member.email} </div>
+                                    <div><b>Admin:</b> {member.isAdmin ? "Yes" : "No"}</div>
                                     <div ><b>Bio: </b>
                                         {member.bio === "" ? <>No bio provided</> : member.bio}
                                     </div>
@@ -117,7 +118,7 @@ export const MembersList = () => {
                                 </div>
 
                                 <div>
-                                    {userObject.is_staff && (
+                                    {userObject.isAdmin && (
                                         <>
                                             <button
                                                 className="btn delete"
@@ -128,15 +129,13 @@ export const MembersList = () => {
                                                 Delete
                                             </button>
 
-                                            {/* Conditional rendering based on whether member is admin or not */}
-                                            {member.is_staff ? (
+                                            {member.isAdmin ? (
                                                 <>
 
                                                     <button
                                                         className="btn"
                                                         onClick={() => {
-                                                            // Handle click event to remove admin status
-                                                            handleAdminRemoveButton({ ...member, is_staff: false })
+                                                            handleAdminRemoveButton({ ...member, isAdmin: false })
                                                         }}
                                                     >
                                                         Remove as Admin
@@ -146,8 +145,7 @@ export const MembersList = () => {
                                                 <button
                                                     className="btn"
                                                     onClick={() => {
-                                                        // Handle click event to add admin status
-                                                        handleAdminAddButton({ ...member, is_staff: true })
+                                                        handleAdminAddButton({ ...member, isAdmin: true })
                                                     }}
                                                 >
                                                     Add as Admin

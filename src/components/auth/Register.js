@@ -25,7 +25,7 @@ export const Register = (props) => {
             "last_name": lastName.current.value,
             "email": email.current.value,
             "password": password.current.value,
-            "is_staff": false
+            "isAdmin": false
         }
 
         registerUser(newMember)
@@ -33,7 +33,7 @@ export const Register = (props) => {
                 if ("token" in res) {
                     const data = {
                         token: res.token,
-                        is_staff: res.is_staff
+                        isAdmin: res.is_staff
                     }
                     localStorage.setItem("bookclub_member", JSON.stringify(data))
                     navigate("/login")

@@ -79,9 +79,9 @@ export const ClubsList = () => {
             <article className="clubs">
 
 
-                {userObject.isAdmin ?
-                    <h2 className="page-heading">Clubs List   <button className="btn btn-primary"
-                        onClick={() => navigate("/clubs/create")}>Add Club</button></h2>
+                {userObject.isAdmin ? <>
+                    <h2 className="page-heading">Clubs List</h2><button className="btn btn-primary"
+                        onClick={() => navigate("/clubs/create")}>Add Club</button></>
                     : <h2 className="page-heading">Clubs List</h2>
                 }
 
@@ -103,12 +103,13 @@ export const ClubsList = () => {
                             return (
                                 <section className="club" key={`club--${club.id}`}>
                                     <div>
+                                        <button
+                                            onClick={((evt) => {
+                                                joinClubButtonHandler(club)
+                                            })}
+                                            className="btn">Join</button>
                                         <h2><b>Club Name: {club.name}</b>
-                                            <button
-                                                onClick={((evt) => {
-                                                    joinClubButtonHandler(club)
-                                                })}
-                                                className="btn">Join</button></h2>
+                                        </h2>
                                         <div><b>Purpose/Goals: </b>{club.purpose}</div>
                                     </div>
                                     <div className="bookInfoContainer">

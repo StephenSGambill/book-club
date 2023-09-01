@@ -31,7 +31,6 @@ export const ProfileEdit = () => {
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
         updateMemberInfo(userObject.id, member)
-        console.log(member)
         navigate("/profile")
     }
 

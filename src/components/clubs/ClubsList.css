@@ -20,13 +20,6 @@
   padding-top: 1rem;
 }
 
-.btn {
-  background-color: rgb(229, 237, 234);
-  border: none;
-  border-radius: 5px;
-  box-shadow: 1px 1px 5px;
-}
-
 .bookInfoContainer {
   display: flex;
   background-color: #d9d9d9;
@@ -34,21 +27,6 @@
 
 .edit-button-container {
   text-align: right;
-}
-
-.edit-button {
-  background-color: rgb(229, 237, 234);
-  border: none;
-  border-radius: 5px;
-  box-shadow: 1px 1px 5px;
-  margin-left: 1rem;
-}
-.delete-button {
-  background-color: rgb(247, 218, 223);
-  border: none;
-  border-radius: 5px;
-  box-shadow: 1px 1px 5px;
-  margin-left: 1rem;
 }
 
 .search-box {

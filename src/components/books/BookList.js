@@ -94,8 +94,9 @@ export const BookList = () => {
         <article className="books" >
 
             <h2 className="page-heading">Books List
-                <button className="btn btn-primary"
-                    onClick={() => navigate("/books/create")}>Add Book</button></h2>
+            </h2>
+            <button className="btn btn-primary"
+                onClick={() => navigate("/books/create")}>Add Book</button>
 
 
             <div className="search-container">

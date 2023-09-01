@@ -12,10 +12,8 @@ export const ClubEdit = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        console.log("hit")
         getBookClubById(clubId)
             .then((clubInfo) => {
-                console.log(clubInfo)
                 const club = clubInfo[0]
                 setClub(club)
                 getBookById(club.bookId)
@@ -59,8 +57,7 @@ export const ClubEdit = () => {
                     }
                     }
                 >Save Club Info</button>
-
-                <div><b>Book:</b> {book.title}</div>
+                <img className="clubImage" src={book.image} />
 
                 <div className="clubName">
                     <label htmlFor="clubName"><b>Club Name:</b></label>
@@ -74,6 +71,7 @@ export const ClubEdit = () => {
                             copy.name = evt.target.value
                             setClub(copy)
                         }} />
+                    <div><b>Book:</b> {book.title}</div>
                 </div>
                 <div className="clubPurpose">
                     <label htmlFor="clubPurpose"><b>Purpose/Goals:</b></label>
