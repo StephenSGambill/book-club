@@ -2,7 +2,7 @@ import { getToken } from "../utils/getToken"
 
 
 export const loginUser = (member) => {
-    return fetch("http://127.0.0.1:8000/login", {
+    return fetch("http://127.0.0.1:8080/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -14,7 +14,7 @@ export const loginUser = (member) => {
 }
 
 export const registerUser = (member) => {
-    return fetch("http://127.0.0.1:8000/register", {
+    return fetch("http://127.0.0.1:8080/register", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

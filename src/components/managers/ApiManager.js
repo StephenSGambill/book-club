@@ -3,18 +3,18 @@ import { getToken } from "../utils/getToken"
 
 
 export const getCurrentMember = (id) => {
-    return fetch(`http://localhost:8000/members/${id}`)
+    return fetch(`http://localhost:8080/members/${id}`)
         .then(res => res.json())
 
 }
 
 export const getMemberByEmail = (email) => {
-    return fetch(`http://localhost:8000/members?email=${email}`)
+    return fetch(`http://localhost:8080/members?email=${email}`)
         .then(res => res.json())
 }
 
 export const getMemberByUsername = (username) => {
-    return fetch(`http://localhost:8000/members?username=${username}`, {
+    return fetch(`http://localhost:8080/members?username=${username}`, {
         headers: {
             "Authorization": `Token ${getToken()}`,
         }
@@ -25,7 +25,7 @@ export const getMemberByUsername = (username) => {
 
 
 export const setNewClubMember = (memberObject) => {
-    return fetch("http://localhost:8000/clubMembers", {
+    return fetch("http://localhost:8080/clubMembers", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export const setNewClubMember = (memberObject) => {
 }
 
 export const updateMemberInfo = (memberId, memberInfo) => {
-    return fetch(`http://localhost:8000/members/${memberId}`, {
+    return fetch(`http://localhost:8080/members/${memberId}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -50,17 +50,17 @@ export const updateMemberInfo = (memberId, memberInfo) => {
 }
 
 export const deleteClubMember = (clubMemberId) => {
-    return fetch(`http://localhost:8000/clubMembers/${clubMemberId}`,
+    return fetch(`http://localhost:8080/clubMembers/${clubMemberId}`,
         { method: "DELETE" })
 }
 
 export const deleteMember = (member) => {
-    return fetch(`http://localhost:8000/members/${member.id}`,
+    return fetch(`http://localhost:8080/members/${member.id}`,
         { method: "DELETE" })
 }
 
 export const getMembers = () => {
-    return fetch(`http://localhost:8000/members`, {
+    return fetch(`http://localhost:8080/members`, {
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Token ${getToken()}`
@@ -73,7 +73,7 @@ export const getMembers = () => {
 
 
 export const setNewBook = (bookInfo) => {
-    return fetch(`http://localhost:8000/books`, {
+    return fetch(`http://localhost:8080/books`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -87,7 +87,7 @@ export const setNewBook = (bookInfo) => {
 
 
 export const updateBookInfo = (book) => {
-    return fetch(`http://localhost:8000/books/${book.id}`, {
+    return fetch(`http://localhost:8080/books/${book.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -98,18 +98,18 @@ export const updateBookInfo = (book) => {
 }
 
 export const deleteBook = (bookId) => {
-    return fetch(`http://localhost:8000/books/${bookId}`,
+    return fetch(`http://localhost:8080/books/${bookId}`,
         { method: "DELETE" })
 
 }
 
 export const getBookById = (id) => {
-    return fetch(`http://localhost:8000/books?&id=${id}`)
+    return fetch(`http://localhost:8080/books?&id=${id}`)
         .then(res => res.json())
 }
 
 export const getBooks = () => {
-    return fetch(`http://localhost:8000/books`, {
+    return fetch(`http://localhost:8080/books`, {
         headers: {
             "Authorization": `Token ${getToken()}`
         }
@@ -119,25 +119,25 @@ export const getBooks = () => {
 }
 
 export const getBookByChapter = (chapterId) => {
-    return fetch(`http://localhost:8000/bookChapters?&id=${chapterId}&_expand=book`)
+    return fetch(`http://localhost:8080/bookChapters?&id=${chapterId}&_expand=book`)
         .then(res => res.json())
 }
 
 
 
 export const getChaptersByBook = () => {
-    return fetch(`http://localhost:8000/bookChapters`)
+    return fetch(`http://localhost:8080/bookChapters`)
         .then(res => res.json())
 }
 
 export const getChaptersByBookId = (bookId) => {
-    return fetch(`http://localhost:8000/bookChapters?&bookId=${bookId}`)
+    return fetch(`http://localhost:8080/bookChapters?&bookId=${bookId}`)
         .then(res => res.json())
 }
 
 export const updateBookChapterTitle = (bookChapters) => {
     bookChapters.map(chapter => {
-        return fetch(`http://localhost:8000/bookChapters/${chapter.id}`, {
+        return fetch(`http://localhost:8080/bookChapters/${chapter.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -150,7 +150,7 @@ export const updateBookChapterTitle = (bookChapters) => {
 }
 
 export const createBookChapters = (chapter) => {
-    return fetch("http://localhost:8000/bookChapters", {
+    return fetch("http://localhost:8080/bookChapters", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -163,22 +163,22 @@ export const createBookChapters = (chapter) => {
 
 
 export const getChapterComments = (id) => {
-    return fetch(`http://localhost:8000/chapterComments?&bookChapterId=${id}`)
+    return fetch(`http://localhost:8080/chapterComments?&bookChapterId=${id}`)
         .then(res => res.json())
 }
 
 export const getCommentsByClub = (id) => {
-    return fetch(`http://localhost:8000/books?`)
+    return fetch(`http://localhost:8080/books?`)
         .then(res => res.json())
 }
 
 export const deleteComment = (commentId) => {
-    return fetch(`http://localhost:8000/chapterComments/${commentId}`,
+    return fetch(`http://localhost:8080/chapterComments/${commentId}`,
         { method: "DELETE" })
 }
 
 export const setNewChapterComment = (commentInfo) => {
-    return fetch(`http://localhost:8000/chapterComments`, {
+    return fetch(`http://localhost:8080/chapterComments`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -191,7 +191,7 @@ export const setNewChapterComment = (commentInfo) => {
 }
 
 export const updateClubInfo = (clubInfo) => {
-    return fetch(`http://localhost:8000/clubs/${clubInfo.id}`, {
+    return fetch(`http://localhost:8080/clubs/${clubInfo.id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -204,7 +204,7 @@ export const updateClubInfo = (clubInfo) => {
 }
 
 export const setNewClub = (clubInfo) => {
-    return fetch(`http://localhost:8000/clubs`, {
+    return fetch(`http://localhost:8080/clubs`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -218,14 +218,14 @@ export const setNewClub = (clubInfo) => {
 
 
 export const deleteClub = (clubId) => {
-    return fetch(`http://localhost:8000/clubs/${clubId}`,
+    return fetch(`http://localhost:8080/clubs/${clubId}`,
         { method: "DELETE" })
 
 }
 
 
 export const getClubs = () => {
-    return fetch(`http://localhost:8000/clubs?&_expand=book`, {
+    return fetch(`http://localhost:8080/clubs?&_expand=book`, {
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Token ${getToken()}`
@@ -235,31 +235,31 @@ export const getClubs = () => {
 }
 
 export const getClubMembers = () => {
-    return fetch(`http://localhost:8000/clubMembers?&_expand=member`)
+    return fetch(`http://localhost:8080/clubMembers?&_expand=member`)
         .then(res => res.json())
 }
 
 
 export const getClubMembersAndClub = () => {
-    return fetch(`http://localhost:8000/clubMembers?&_expand=club`)
+    return fetch(`http://localhost:8080/clubMembers?&_expand=club`)
         .then(res => res.json())
 }
 
 export const getClubMemberById = (id) => {
-    return fetch(`http://localhost:8000/clubMembers?&_expand=club&memberId=${id}`)
+    return fetch(`http://localhost:8080/clubMembers?&_expand=club&memberId=${id}`)
         .then(res => res.json());
 };
 
 
 
 export const getBookClubById = (id) => {
-    return fetch(`http://localhost:8000/clubs?&id=${id}`)
+    return fetch(`http://localhost:8080/clubs?&id=${id}`)
         .then(res => res.json())
 }
 
 
 export const getClubById = (id) => {
-    return fetch(`http://localhost:8000/clubs?&id=${id}`)
+    return fetch(`http://localhost:8080/clubs?&id=${id}`)
         .then(res => res.json())
 }
 
